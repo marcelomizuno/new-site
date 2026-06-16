@@ -1,0 +1,36 @@
+{
+  "source": "https://pomelo.la/en",
+  "extractedAt": "2026-06-16",
+  "method": "Playwright + computed styles extraction",
+  "cssStylesheets": [
+    "https://pomelo.la/_next/static/css/33c545c56453db83.css",
+    "https://pomelo.la/_next/static/css/6aece877d2ff7581.css",
+    "https://pomelo.la/_next/static/css/226f4571965e8b3e.css",
+    "https://pomelo.la/_next/static/css/6f1cbdb028fd4353.css"
+  ],
+  "cssVariables": {
+    "--wrapper": "95%",
+    "--max-w-wrapper": "1440px",
+    "--grid-cols-space": "28px"
+  },
+  "fontFaces": [
+    { "family": "Geist", "weight": "100-900", "style": "normal", "files": ["f639721981034f88-s.woff2", "9766a7e9e2e0ad5a-s.woff2", "b66cf8e69499582a-s.woff2", "aa016aab0e6d1295-s.woff2", "22a5144ee8d83bca-s.p.woff2"] },
+    { "family": "Geist Fallback", "weight": "", "style": "", "files": ["local(Arial)"] },
+    { "family": "Geist Mono", "weight": "100-900", "style": "normal", "files": ["d100b2a099e34044-s.woff2", "2c34d62a75506231-s.woff2", "0f1bdadaf30e2d5f-s.woff2", "a115172161b307bb-s.woff2", "601f5c280d60caca-s.woff2", "f5271587012faf78-s.p.woff2"] },
+    { "family": "Geist Mono Fallback", "weight": "", "style": "", "files": ["local(Arial)"] }
+  ],
+  "computedStyles": {
+    "textColors": ["rgb(0,0,0)", "rgb(255,255,255)", "rgb(156,163,175)", "rgb(236,72,153)", "rgb(238,85,162)", "rgb(239,98,170)", "rgb(241,111,179)", "rgb(242,124,187)", "rgb(244,137,196)", "rgb(246,150,204)", "rgb(247,163,213)", "rgb(249,176,221)", "rgb(250,189,230)", "rgb(252,202,238)", "rgb(253,215,247)", "rgb(255,228,255)", "rgb(192,132,252)", "rgb(235,98,159)", "rgb(173,161,165)"],
+    "bgColors": ["rgb(8,12,33)", "rgb(18,22,43)", "rgb(255,255,255)", "rgba(217,217,217,0.008)", "rgba(244,114,182,0.15)", "rgb(255,228,255)"],
+    "fontSizes": ["10px", "12px", "13px", "14px", "16px", "20px", "24px", "40px", "65px", "70px", "80px"],
+    "fontWeights": ["400", "500", "600"],
+    "borderRadii": ["2px", "5px", "8px", "10px", "18px", "32px", "50px", "50%"],
+    "letterSpacings": ["-3px", "-1.625px", "-0.8px", "-0.6px", "-0.5px", "-0.32px", "-0.28px", "-0.13px", "-0.1px", "2px"],
+    "lineHeights": ["12px", "15px", "16.8px", "18.2px", "19.5px", "20.8px", "21px", "24px", "28.8px", "30px", "48px", "65px", "70px", "80px"]
+  },
+  "headings": [
+    { "tag": "H1", "text": "Smart payments infrastructure. Zero friction.", "color": "rgb(255,255,255)", "font": "Geist", "size": "70px", "weight": 600, "lineHeight": "70px", "letterSpacing": "-3px" },
+    { "tag": "H2", "text": "One technology, endless applications", "color": "rgb(255,255,255)", "font": "Geist", "size": "65px", "weight": 600, "lineHeight": "65px", "letterSpacing": "-1.625px" },
+    { "tag": "H3", "text": "A modular, API-first platform...", "color": "rgb(255,255,255)", "font": "Geist", "size": "40px", "weight": 600, "lineHeight": "48px", "letterSpacing": "-0.8px" }
+  ]
+}
