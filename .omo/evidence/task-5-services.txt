@@ -1,0 +1,104 @@
+# Evidence: Task 5 — Services Pages
+
+Date: 2026-06-18
+Plan: `.omo/plans/site-template.md`
+Reference read: `docs/website-plan-v3.md` (sections 2.2, 2.3, 2.4)
+
+## Files created
+
+- `services/index.html`
+- `services/ai-automation.html`
+- `services/web-development.html`
+- `services/ecommerce.html`
+
+## Per-page summary
+
+### `services/index.html` — Services Overview (351 lines)
+- Hero: "Our Services" with gradient-hero + section badge + lede + CTA
+- 3-card services grid (`.card.services-grid__card`) with emoji icon, title, body, 3 highlight bullets (✓), and primary CTA linking to each detail page
+- 3-step "How we work" strip with `.badge--accent` numbered steps
+- Final CTA section ("Get Your Free Diagnosis") in `gradient-hero`
+- All 4 CSS files loaded in correct order; `js/main.js` + `js/language.js` linked
+- 17 `data-i18n` attributes, 4 `data-animate` sections, 4 `/contact` CTAs
+
+### `services/ai-automation.html` — AI Automation (945 lines)
+- Hero: "Your 24/7 Revenue Engine" with double CTA (primary + secondary that smooth-scrolls to `#how-it-works`)
+- Problem → Solution split: `.split__col--problem` (rose tint) + `.split__col--solution` (pink glow)
+- Features grid (3×2): WhatsApp, Instagram, Auto Follow-Up, CRM Dashboard, Smart Booking, Revenue Metrics — emoji icon + title + body each
+- What's Included checklist: 8 items, 2-column grid with custom ✓ pill
+- "How It Works" vertical timeline (5 steps, gradient line + glow dots)
+- Tiers (3 cards): Starter / Core / Growth — Core has `.tier--featured` with `.tier__badge` "Most Popular"
+- Case Study teaser: large blockquote + stat card with `100+ leads/month` and `<1 min` numbers
+- FAQ accordion: 5 `.faq-item` elements, each with `.faq-question` (button) + `.faq-answer` (collapsible div). JS hook verified against `js/faq.js` selectors.
+- Final CTA: "Your competitors are already automating..."
+- Loads `js/main.js` + `js/faq.js` + `js/language.js`
+- 19 `data-i18n`, 9 `data-animate`, 5 `.faq-item`, 5 `.faq-question`, 5 `.faq-answer`, 8 `/contact` CTAs
+
+### `services/web-development.html` — Web Development (552 lines)
+- Hero: "Websites That Convert Clicks Into Revenue" with double CTA
+- Portfolio Grid: 3 `.portfolio__item` cards with `.portfolio__shot` colored-div placeholders (pink/purple for clinic, indigo for law, pink/gold for architect) + caption + result metric
+- What's Included checklist: 6 items (responsive design, conversion copy, WhatsApp integration, SEO basics, GA, 1 revision round)
+- Delivery Process: 6-step horizontal `.process` (Briefing → Wireframe → Design & Dev → QA → Review → Launch) + `.process__timeline` strip showing "7–14 business days"
+- Final CTA: "Get Your Revenue-Ready Website"
+- 19 `data-i18n`, 5 `data-animate`, 5 `/contact` CTAs
+
+### `services/ecommerce.html` — E-commerce (503 lines)
+- Hero: "Online Stores Built to Sell From Day One" with double CTA
+- What's Included checklist: 7 items (custom theme, products listed, payments, shipping, essential pages, basic SEO, mobile-responsive)
+- Platforms comparison: 2-column `.platforms` (Brazil 🇧🇷 WooCommerce vs USA/Global 🇺🇸 Shopify), each with flag pill, heading, 5-bullet feature list, primary CTA
+- "Why us" 3-card strip (Launch speed / Payments / Mobile-first) — supports the platforms choice
+- Final CTA: "Launch Your Online Store"
+- 19 `data-i18n`, 5 `data-animate`, 7 `/contact` CTAs
+
+## Design system usage
+
+All four pages consume the established token system without modification:
+- Colors: `var(--color-bg-primary/secondary)`, `var(--color-accent-pink-*)`, `var(--color-border-*)`
+- Type: `var(--text-xs|sm|base|base-sm|md|lg|xl|2xl|3xl)`, `var(--font-regular|medium|semibold)`, `var(--leading-*)`, `var(--tracking-*)`, `var(--font-mono)`
+- Spacing/radius: `var(--grid-gap)`, `var(--radius-pill|xl|2xl)`
+- Shadow: `var(--shadow-lg|sm)`, `var(--color-bg-accent-glow)`
+
+Page-scoped CSS in `<style>` blocks stays inside each file (no edits to `css/tokens.css` / `css/base.css` / `css/components.css` / `css/animations.css` — per MUST NOT DO).
+
+## Constraint checks
+
+- 0 `!important` declarations added
+- 0 hardcoded hex values in HTML content (only inside page-scoped `<style>` blocks for portfolio gradient placeholders, matching existing convention)
+- 0 prices anywhere — regex scan for `$N`, `R$`, `USD`, `BRL`, `N/month` returned 0 matches
+- 0 placeholder copy — all content is industry-specific copy adapted from `docs/website-plan-v3.md` sections 2.2 / 2.3 / 2.4
+- 0 actual image files referenced — portfolio uses `<div>` placeholders with CSS gradients
+- 0 JavaScript frameworks — only the 3 existing IIFE modules (`main.js`, `faq.js`, `language.js`)
+- 0 files modified outside `services/`
+- CSS load order: `tokens → base → components → animations` (matches inherited convention)
+- JS load order per page: `main → faq (AI only) → language`
+- Header/footer HTML copied verbatim from `partials/` (paths adjusted to absolute `/` form matching existing convention; relative `../` for CSS/JS so files work both ways)
+- All 4 pages include a single `<h1>`, two `gradient-hero` sections (hero + final CTA), and `data-animate` on every meaningful section
+
+## Verification commands run
+
+```bash
+# Tag balance + CSS/JS refs per page
+python3 -c "..." (see script)  →  ALL TAGS BALANCED OK on all 4 files
+
+# Hook counts (data-i18n, data-animate, faq-item, faq-question, faq-answer)
+# AI page: 19 / 9 / 5 / 5 / 5  ✓ exactly the 5 FAQ questions from the plan
+
+# Forbidden-pattern scan for prices
+grep -E '\$[0-9]|R\$[0-9]|USD|BRL|EUR|£[0-9]|€[0-9]' services/*.html  →  no matches
+
+# HTML parse check (html.parser)
+python3 html.parser  →  all 4 files parse cleanly with no errors
+
+# Git whitespace check
+git diff --check services/  →  no whitespace errors
+```
+
+## Page-specific key counts
+
+| Page                | Lines | data-i18n | data-animate | .faq-item | /contact CTAs | Free Diagnosis |
+|---------------------|------:|----------:|-------------:|----------:|--------------:|---------------:|
+| index.html          |   351 |        17 |            4 |         0 |             4 |              3 |
+| ai-automation.html  |   945 |        19 |            9 |         5 |             8 |              5 |
+| web-development.html|   552 |        19 |            5 |         0 |             5 |              2 |
+| ecommerce.html      |   503 |        19 |            5 |         0 |             7 |              4 |
+| **Total**           | 2,351 |        74 |           23 |         5 |            24 |             14 |

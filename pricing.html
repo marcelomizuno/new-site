@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simple, transparent pricing for AI automation, web development, and e-commerce. No hidden fees, no long-term contracts. Book a free 15-minute diagnosis.">
+  <meta name="theme-color" content="#080C21">
+  <title>Pricing — Brand | Simple, Transparent Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    /* Pricing-scoped styles — design tokens only, no hardcoded hex.
+       Reuses existing utilities: .section-head, .card, .btn-primary, .gradient-hero, .cta-final */
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    @media (max-width: 768px) { .hero { padding: 72px 0 56px; } }
+    .hero__headline { max-width: 880px; margin: 0 auto 20px; }
+    .hero__subheadline {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Section head ─────────────────────────────────────── */
+    .section-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .section-head__eyebrow { display: inline-flex; margin-bottom: 16px; }
+    .section-head__title { margin-bottom: 16px; }
+    .section-head__lede {
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── Service cards (3-up) ─────────────────────────────── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--grid-gap);
+    }
+    @media (max-width: 1024px) { .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px)  { .pricing-grid { grid-template-columns: 1fr; } }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px 28px;
+      height: 100%;
+    }
+    .service-card__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-xl);
+      background: var(--color-bg-white-06);
+      border: 1px solid var(--color-border-subtle);
+      font-size: var(--text-xl);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .service-card__title {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-snug);
+    }
+    .service-card__lede {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+    .service-card__tiers {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px 0 0;
+      margin-top: auto;
+      border-top: 1px solid var(--color-border-subtle);
+    }
+    .service-card__tier {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .service-card__tier-name {
+      font-size: var(--text-base-sm);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-normal);
+    }
+    .service-card__tier-note {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .service-card__cta { margin-top: 16px; }
+
+    /* ── Custom note line under cards ─────────────────────── */
+    .pricing-foot {
+      text-align: center;
+      max-width: 680px;
+      margin: 56px auto 0;
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Comparison table ─────────────────────────────────── */
+    .compare-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-secondary);
+    }
+    .compare {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      font-size: var(--text-base);
+    }
+    .compare thead th {
+      padding: 20px 24px;
+      text-align: left;
+      background: var(--color-bg-white-03);
+      color: var(--color-text-primary);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-normal);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .compare thead th:first-child {
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-normal);
+      color: var(--color-text-muted);
+    }
+    .compare thead th.col-featured {
+      background: var(--color-bg-accent-glow);
+      color: var(--color-accent-pink-300);
+      position: relative;
+    }
+    .compare tbody td {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      color: var(--color-text-secondary);
+      vertical-align: middle;
+    }
+    .compare tbody tr:last-child td { border-bottom: none; }
+    .compare tbody td:first-child {
+      color: var(--color-text-primary);
+      font-weight: var(--font-medium);
+    }
+    .compare tbody td.cell-mark {
+      text-align: center;
+      font-size: var(--text-md);
+      width: 110px;
+    }
+    .compare tbody td.cell-featured {
+      background: var(--color-bg-white-03);
+    }
+    .mark-yes { color: var(--color-accent-pink-400); }
+    .mark-no  { color: var(--color-text-muted); }
+
+    /* ── Scroll animation defaults (consumed by main.js) ── */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    [data-animate].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-animate] { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER (partial: partials/header.html)
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="/services" data-i18n="nav.services">Services</a></li>
+          <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="/pricing" data-i18n="nav.pricing" aria-current="page">Pricing</a></li>
+          <li><a href="/about" data-i18n="nav.about">About</a></li>
+          <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="/services" data-i18n="nav.services">Services</a></li>
+        <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="/pricing" data-i18n="nav.pricing" aria-current="page">Pricing</a></li>
+        <li><a href="/about" data-i18n="nav.about">About</a></li>
+        <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="hero gradient-hero" aria-labelledby="hero-headline">
+      <div class="container">
+        <span class="hero__eyebrow badge badge--accent" data-i18n="pricing.eyebrow">Pricing</span>
+        <h1 id="hero-headline" class="hero__headline" data-i18n="pricing.headline">
+          Simple, Transparent Pricing
+        </h1>
+        <p class="hero__subheadline" data-i18n="pricing.subheadline">
+          No hidden fees. No long-term contracts. Just results.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SERVICE CARDS (3)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="services" aria-labelledby="services-title" data-animate>
+      <div class="container">
+        <header class="section-head">
+          <h2 id="services-title" class="section-head__title" data-i18n="pricing.servicesTitle">Three ways to install the system.</h2>
+          <p class="section-head__lede" data-i18n="pricing.servicesLede">Every business is different. Pick the surface area that matches where you are today &mdash; we'll grow with you.</p>
+        </header>
+
+        <div class="pricing-grid">
+          <article class="card service-card">
+            <span class="service-card__icon" aria-hidden="true">&#129302;</span>
+            <h3 class="service-card__title" data-i18n="pricing.serviceAiTitle">AI Automation</h3>
+            <p class="service-card__lede" data-i18n="pricing.serviceAiLede">Capture, qualify, and follow up with every lead on WhatsApp and Instagram &mdash; 24/7.</p>
+            <div class="service-card__tiers" aria-label="AI Automation tiers" data-i18n-aria-label="aria.aiTiers">
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierStarter">Starter</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierSingleChannel">Single channel</span>
+              </div>
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierCore">Core</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierMultiCrm">Multi-channel + CRM</span>
+              </div>
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierGrowth">Growth</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierFullAutomation">Full automation stack</span>
+              </div>
+            </div>
+            <a href="/contact" class="btn-secondary service-card__cta" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          </article>
+
+          <article class="card service-card">
+            <span class="service-card__icon" aria-hidden="true">&#127760;</span>
+            <h3 class="service-card__title" data-i18n="pricing.serviceWebTitle">Web Development</h3>
+            <p class="service-card__lede" data-i18n="pricing.serviceWebLede">Landing pages and websites built to convert &mdash; not just to look pretty in a screenshot.</p>
+            <div class="service-card__tiers" aria-label="Web Development tiers" data-i18n-aria-label="aria.webTiers">
+              <div class="service-card__tier">
+                <span class="service-card__tier-name">Landing</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierSinglePage">Single-page campaign</span>
+              </div>
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierCore">Core</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierMultiPage">Multi-page site</span>
+              </div>
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierGrowth">Growth</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierFullFunnel">Full funnel + analytics</span>
+              </div>
+            </div>
+            <a href="/contact" class="btn-secondary service-card__cta" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          </article>
+
+          <article class="card service-card">
+            <span class="service-card__icon" aria-hidden="true">&#128722;</span>
+            <h3 class="service-card__title" data-i18n="pricing.serviceEcommerceTitle">E-commerce</h3>
+            <p class="service-card__lede" data-i18n="pricing.serviceEcommerceLede">WooCommerce and Shopify stores with the same revenue mindset &mdash; built to sell, not just to list.</p>
+            <div class="service-card__tiers" aria-label="E-commerce tiers" data-i18n-aria-label="aria.ecommerceTiers">
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierStarter">Starter</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierStorefront">Storefront launch</span>
+              </div>
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierCore">Core</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierCatalog">Catalog + checkout</span>
+              </div>
+              <div class="service-card__tier">
+                <span class="service-card__tier-name" data-i18n="pricing.tierGrowth">Growth</span>
+                <span class="service-card__tier-note" data-i18n="pricing.tierFunnels">Funnels + retention</span>
+              </div>
+            </div>
+            <a href="/contact" class="btn-secondary service-card__cta" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          </article>
+        </div>
+
+        <p class="pricing-foot">
+          Each business is unique. Book a free 15-minute diagnosis and we'll recommend the right solution &mdash; no obligations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         COMPARISON TABLE (no prices — feature checkmarks only)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="compare-section section-dark" aria-labelledby="compare-title" data-animate>
+      <div class="container">
+        <header class="section-head">
+          <span class="section-head__eyebrow badge" data-i18n="pricing.compareEyebrow">What's included</span>
+          <h2 id="compare-title" class="section-head__title" data-i18n="pricing.compareTitle">Compare what's inside each tier.</h2>
+          <p class="section-head__lede" data-i18n="pricing.compareLede">Pick the level of automation that matches your volume. Every tier ships installed, configured, and live in 7 days.</p>
+        </header>
+
+        <div class="compare-wrap">
+          <table class="compare" aria-label="Feature comparison across Starter, Core, and Growth tiers" data-i18n-aria-label="aria.featureComparison">
+            <caption class="sr-only" data-i18n="aria.featureComparisonCaption">Feature comparison of Starter, Core, and Growth tiers</caption>
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="pricing.tableFeature">Feature</th>
+                <th scope="col" data-i18n="pricing.tierStarter">Starter</th>
+                <th scope="col" class="col-featured" data-i18n="pricing.tierCore">Core</th>
+                <th scope="col" data-i18n="pricing.tierGrowth">Growth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableWhatsappBot">WhatsApp bot</th>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableInstagramBot">Instagram bot</th>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableAutoResponses">Auto responses</th>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableCrmDashboard">CRM dashboard</th>
+                <td class="cell-mark"><span class="mark-no" aria-label="Not included" data-i18n-aria-label="pricing.notIncluded">&#10060;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableAutoFollowup">Auto follow-up</th>
+                <td class="cell-mark"><span class="mark-no" aria-label="Not included" data-i18n-aria-label="pricing.notIncluded">&#10060;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableBookingSystem">Booking system</th>
+                <td class="cell-mark"><span class="mark-no" aria-label="Not included" data-i18n-aria-label="pricing.notIncluded">&#10060;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableWebsiteLanding">Website / landing page</th>
+                <td class="cell-mark"><span class="mark-no" aria-label="Not included" data-i18n-aria-label="pricing.notIncluded">&#10060;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+              <tr>
+                <th scope="row" data-i18n="pricing.tableSocialAutomation">Social automation</th>
+                <td class="cell-mark"><span class="mark-no" aria-label="Not included" data-i18n-aria-label="pricing.notIncluded">&#10060;</span></td>
+                <td class="cell-mark cell-featured"><span class="mark-no" aria-label="Not included" data-i18n-aria-label="pricing.notIncluded">&#10060;</span></td>
+                <td class="cell-mark"><span class="mark-yes" aria-label="Included" data-i18n-aria-label="pricing.included">&#9989;</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════════════════ -->
+    <section class="cta-final" aria-labelledby="final-cta-title" data-animate>
+      <div class="container">
+        <h2 id="final-cta-title" class="cta-final__title" data-i18n="pricing.finalTitle">Ready to stop guessing on price?</h2>
+        <p class="cta-final__sub" data-i18n="pricing.finalLede">15-minute call. We'll show you exactly where your business is leaking revenue &mdash; and quote only what fits.</p>
+        <a href="/contact" class="btn-primary">Get Your Free Diagnosis &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER (partial: partials/footer.html)
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="/services/ai-automation" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="/services/web-development" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="/services/ecommerce" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="/services" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="/industries/dental-aesthetics" data-i18n="footer.dentalAesthetics">Dental Aesthetics</a></li>
+            <li><a href="/industries/law-firms" data-i18n="footer.lawFirms">Law Firms</a></li>
+            <li><a href="/industries/medical-clinics" data-i18n="footer.medicalClinics">Medical Clinics</a></li>
+            <li><a href="/industries/architecture" data-i18n="footer.architecture">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="/about" data-i18n="nav.about">About</a></li>
+            <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+</body>
+</html>

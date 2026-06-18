@@ -1,0 +1,128 @@
+Task 7 — Pricing, About, Contact pages
+========================================
+
+Date: 2026-06-18
+Files created:
+  pricing.html      529 lines, 24814 bytes
+  about.html        509 lines, 23066 bytes
+  contact.html      545 lines, 24042 bytes
+  Total:           1583 lines, 71922 bytes
+
+Plan source: docs/website-plan-v3.md lines 484-568
+
+──────────────────────────────────────────────────────────────────
+Structural verification
+──────────────────────────────────────────────────────────────────
+
+pricing.html
+  Sections: 4 (hero, services, compare-section, cta-final)
+  Headings: 1 h1, 3 h2, 3 h3
+  data-animate: 6 attributes
+  data-i18n: 19 attributes
+  .card wrappers: 3 (3 service cards)
+  .btn-primary: 4
+  stylesheets: 4 (tokens, base, components, animations)
+  scripts: 2 (main.js, language.js)
+
+about.html
+  Sections: 5 (hero, story, values, approach, cta-final)
+  Headings: 1 h1, 4 h2, 7 h3
+  data-animate: 7 attributes
+  data-i18n: 20 attributes
+  .card wrappers: 3 (3 value cards)
+  .btn-primary: 4
+  stylesheets: 4
+  scripts: 2 (main.js, language.js)
+
+contact.html
+  Sections: 3 (hero, contact-section, cta-final)
+  Headings: 1 h1, 2 h2, 1 h3
+  data-animate: 5 attributes
+  data-i18n: 19 attributes
+  .card wrappers: 2 (form-card, info-card)
+  .btn-primary: 7 (incl. submit button + nav + footer)
+  stylesheets: 4
+  scripts: 3 (main.js, form.js, language.js)
+
+──────────────────────────────────────────────────────────────────
+Spec compliance scan
+──────────────────────────────────────────────────────────────────
+
+[OK] Pricing — NO prices anywhere
+     grep `\$\d|R\$|USD|BRL|N/month|per month|/mo\b` returned 0 matches
+     across all 3 files. Comparison table uses feature checkmarks only.
+
+[OK] Pricing — Comparison table uses Unicode ✅/❌ glyphs
+     8 rows × 3 tier columns = 24 cells, rendered via
+     &#9989; (✅ heavy check) and &#10060; (❌ cross mark) HTML entities.
+
+[OK] Pricing — Service cards (3)
+     AI Automation | Web Development | E-commerce. Each card has
+     tier breakdown (Starter/Core/Growth or Landing/Core/Growth) with
+     descriptive subtitle, no prices. CTA = "Get Your Free Diagnosis".
+
+[OK] About — Values cards (3)
+     🎯 Revenue-First | ⚡ Speed | 🔍 Transparency.
+     Reuses .card class from design system.
+
+[OK] About — Approach steps (4)
+     Diagnose → Build → Launch → Optimize. Numbered circles with
+     pink→purple gradient + arrows between cards on desktop ≥1025px.
+
+[OK] Contact — Form has all 6 fields
+     Name, Email, Phone/WhatsApp, Business type (dropdown),
+     What are you looking for? (dropdown), Message.
+     All wrapped in .field containers per js/form.js contract.
+     data-validate + novalidate attributes wired correctly.
+     success-message div hidden by default, role="status" aria-live="polite".
+     Form fields use NO placeholder attributes (per MUST NOT DO).
+
+[OK] Contact — Info section (4 items)
+     📍 São Paulo, Brazil | WhatsApp +55 (11) 0000-0000 |
+     Email hello@brand.example | Instagram @brand
+
+[OK] All pages link all CSS (tokens→base→components→animations)
+[OK] All pages load correct JS subset
+     pricing/about: main.js + language.js
+     contact: main.js + form.js + language.js
+
+──────────────────────────────────────────────────────────────────
+Design system consumption
+──────────────────────────────────────────────────────────────────
+
+All 3 pages:
+  - Use only `var(--*)` design tokens (no hardcoded hex in inline styles)
+  - Inherit .site-header + .site-footer from partials (verbatim embed)
+  - Reuse .card, .btn-primary, .btn-secondary, .badge, .badge--accent,
+    .section-head, .gradient-hero, .cta-final from homepage/conventions
+  - aria-current="page" set on the active nav link per page
+  - [data-animate] scroll-reveal pattern duplicated locally (consistent
+    with index.html Task-4 pattern; css/animations.css is empty until
+    Task 11 lands — kept local so it stays consistent with current state)
+  - prefers-reduced-motion fallback present in each scoped style block
+
+──────────────────────────────────────────────────────────────────
+Server check
+──────────────────────────────────────────────────────────────────
+
+python3 -m http.server 8765 → all 3 pages return HTTP 200.
+
+  http://localhost:8765/pricing.html   200 OK
+  http://localhost:8765/about.html     200 OK
+  http://localhost:8765/contact.html   200 OK
+
+──────────────────────────────────────────────────────────────────
+Constraints enforced
+──────────────────────────────────────────────────────────────────
+
+  [OK] 0 modifications to css/, js/, partials/, or any pre-existing file
+  [OK] 0 frameworks, 0 build tools, 0 npm packages
+  [OK] 0 actual <img> tags, 0 binary assets, 0 Grav/Twig syntax
+  [OK] 0 placeholder text in form fields (per MUST NOT DO)
+  0 prices anywhere in pricing.html (per MUST NOT DO)
+  0 hardcoded hex colors in any inline body styles
+  0 Lorem ipsum — all copy derived from plan § 2.6/2.7/2.8
+
+──────────────────────────────────────────────────────────────────
+Task complete
+──────────────────────────────────────────────────────────────────

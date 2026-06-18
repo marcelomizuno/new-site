@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Firms — Filter High-Value Leads, Automatically</title>
+  <meta name="description" content="Not every inquiry is worth a proposal. Project type, budget, and timeline — qualified automatically, routed to the right partner.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="../index.html" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+          <li><a href="index.html" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+        <li><a href="index.html" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="gradient-hero" data-animate>
+      <div class="container" style="text-align: center; padding-top: 64px; padding-bottom: 64px;">
+        <span class="badge badge--accent" style="margin-bottom: 24px;">🏗️ Architecture Firms</span>
+        <h1 style="margin-bottom: 24px;">Filter High-Value Leads,<br>Automatically</h1>
+        <p style="max-width: 720px; margin: 0 auto 32px; font-size: var(--text-lg); color: var(--color-text-secondary);">
+          Not every inquiry is worth a proposal. We install a 24/7 intake system that qualifies project type,
+          budget, and timeline — then books the right prospects for an in-person visit.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="../contact.html" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          <a href="#system" class="btn-secondary">See the System</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ THE PROBLEM ═══════════ -->
+    <section data-animate>
+      <div class="container">
+        <div class="grid-2" style="align-items: center; gap: 64px;">
+          <div>
+            <span class="badge" style="margin-bottom: 16px;">The Problem</span>
+            <h2 style="margin-bottom: 24px;">Every "quick question"<br>is a half-day of senior time.</h2>
+            <p style="margin-bottom: 16px;">
+              Architecture studios are flooded with inquiries — but most are vague, off-strategy, or far below your fee floor.
+              Partners spend their week on 60-minute calls that never become projects. Meanwhile, the right prospects slip away
+              because no one responded with the rigour their project deserved.
+            </p>
+          </div>
+          <div class="card" style="padding: 32px;">
+            <ul style="display: flex; flex-direction: column; gap: 16px;">
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">Inbound leads have no project type, budget, or timeline attached</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">Senior architects spend 4–6 hours/week on calls that never convert</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">No structured intake → proposal-ready briefs take days to compile</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">High-value prospects ghost after the first email — no follow-up cadence</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ THE SOLUTION ═══════════ -->
+    <section id="system" class="section-dark" data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <span class="badge badge--accent" style="margin-bottom: 16px;">Your Revenue System</span>
+          <h2 style="margin-bottom: 16px;">What We Build for Architecture Firms</h2>
+          <p style="max-width: 640px; margin: 0 auto;">An intake layer that turns vague inquiries into proposal-ready briefs — and stops the rest at the door.</p>
+        </div>
+
+        <div style="display: flex; gap: 16px; align-items: stretch; flex-wrap: wrap; justify-content: center; margin-bottom: 48px;">
+
+          <div class="card" style="flex: 1 1 240px; min-width: 240px;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">💬</div>
+            <h4 class="card__title">Capture</h4>
+            <p class="card__body" style="margin-bottom: 12px;">WhatsApp + web bot for project triage:</p>
+            <ul style="display: flex; flex-direction: column; gap: 6px; font-size: var(--text-base-sm); color: var(--color-text-muted);">
+              <li>• Residential / commercial / interior</li>
+              <li>• New build / renovation / extension</li>
+              <li>• Land area & built area estimate</li>
+              <li>• Land ownership status</li>
+            </ul>
+          </div>
+
+          <div style="display: flex; align-items: center; color: var(--color-accent-pink-500); font-size: 28px;" aria-hidden="true">→</div>
+
+          <div class="card" style="flex: 1 1 240px; min-width: 240px;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">📊</div>
+            <h4 class="card__title">Qualify</h4>
+            <p class="card__body" style="margin-bottom: 12px;">CRM pipeline that scores on:</p>
+            <ul style="display: flex; flex-direction: column; gap: 6px; font-size: var(--text-base-sm); color: var(--color-text-muted);">
+              <li>• Project type & scale fit</li>
+              <li>• Estimated budget & fee fit</li>
+              <li>• Timeline & decision readiness</li>
+              <li>• Land & permit status</li>
+            </ul>
+          </div>
+
+          <div style="display: flex; align-items: center; color: var(--color-accent-pink-500); font-size: 28px;" aria-hidden="true">→</div>
+
+          <div class="card" style="flex: 1 1 240px; min-width: 240px;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">🔄</div>
+            <h4 class="card__title">Convert</h4>
+            <p class="card__body" style="margin-bottom: 12px;">Site-visit booking + brief delivery:</p>
+            <ul style="display: flex; flex-direction: column; gap: 6px; font-size: var(--text-base-sm); color: var(--color-text-muted);">
+              <li>• In-person visit scheduling</li>
+              <li>• Pre-visit brief for the architect</li>
+              <li>• Follow-up cadence post-visit</li>
+              <li>• Reactivation for stalled leads</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="grid-2">
+          <div class="card" style="padding: 24px;">
+            <h4 style="margin-bottom: 8px;">+ Project-Type Portfolio Pages</h4>
+            <p class="card__body">A landing page per project category — optimized for the search terms your ideal clients actually use, with case studies that pre-sell your studio's signature.</p>
+          </div>
+          <div class="card" style="padding: 24px;">
+            <h4 style="margin-bottom: 8px;">+ Proposal-Ready Brief</h4>
+            <p class="card__body">Every qualified lead lands in your inbox as a structured brief — project type, area, budget, timeline, constraints — ready for the partner to act on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ HOW IT WORKS ═══════════ -->
+    <section data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">How It Works for Your Studio</h2>
+          <p style="max-width: 640px; margin: 0 auto;">From kickoff to first qualified site visit — typically 21 days.</p>
+        </div>
+
+        <div class="grid-3" style="gap: 24px;">
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 01</div>
+            <h4 class="card__title">Map your ideal project</h4>
+            <p class="card__body">We sit with each partner to define project type, scale, fee threshold, and the clients you actually want more of.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 02</div>
+            <h4 class="card__title">Build the intake bot + CRM</h4>
+            <p class="card__body">WhatsApp menu, qualification flow, and pipeline — written in your studio's voice, not a template.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 03</div>
+            <h4 class="card__title">Launch the portfolio site</h4>
+            <p class="card__body">Project-type pages connected to the intake — so a Google Ads click on "commercial architect" lands on the right portfolio page, not a generic homepage.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 04</div>
+            <h4 class="card__title">Wire site-visit scheduling</h4>
+            <p class="card__body">Auto-schedule site visits with structured pre-visit briefs — so partners walk in already understanding the project.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 05</div>
+            <h4 class="card__title">Optimize quarterly</h4>
+            <p class="card__body">We review every qualified lead with you monthly — and tune the intake to reflect the projects that actually close.</p>
+          </div>
+          <div class="card" style="padding: 28px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--color-bg-accent-glow); border-color: var(--color-accent-pink-500);">
+            <h4 style="margin-bottom: 8px;">Average lift</h4>
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug);">+58%</p>
+            <small>qualified site visits booked per month</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ COMPLIANCE / POSITIONING ═══════════ -->
+    <section class="section-dark" data-animate>
+      <div class="container">
+        <div class="grid-2" style="align-items: center; gap: 64px;">
+          <div>
+            <span class="badge badge--accent" style="margin-bottom: 16px;">Positioning & Process</span>
+            <h2 style="margin-bottom: 20px;">CAU-aware language<br>across every flow.</h2>
+            <p style="margin-bottom: 16px;">
+              Architecture has its own advertising and attribution rules — and a wrong phrase can mean a CAU complaint.
+              Every intake script, every case-study claim, and every CTA is reviewed to make sure it reflects your studio's
+              positioning without crossing the line.
+            </p>
+            <ul style="display: flex; flex-direction: column; gap: 12px;">
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">CAU number + responsible architect surfaced on every page</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">No superlative claims ("best", "#1") anywhere in the system</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">Project attributions properly credited to the right partner</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">LGPD-aligned lead data handling and retention policy</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card" style="padding: 32px; text-align: center;">
+            <div style="font-size: 56px; margin-bottom: 16px;" aria-hidden="true">📐</div>
+            <h4 class="card__title">Built for CAU-regulated studios</h4>
+            <p class="card__body">From solo architects to multi-partner firms — the system adapts to your studio's positioning and CAU's local guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ METRICS ═══════════ -->
+    <section data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">Metrics That Map to Your Studio</h2>
+          <p style="max-width: 640px; margin: 0 auto;">We track what partners actually care about — not lead volume.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">&lt; 4 hrs</p>
+            <h5 style="margin-bottom: 4px;">Response time</h5>
+            <small>From inbound to partner-ready brief</small>
+          </div>
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">44%</p>
+            <h5 style="margin-bottom: 4px;">Site-visit rate</h5>
+            <small>Inquiries that book an in-person visit</small>
+          </div>
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">−65%</p>
+            <h5 style="margin-bottom: 4px;">Off-strategy calls</h5>
+            <small>Partner time wasted on unqualified leads</small>
+          </div>
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">2.8×</p>
+            <h5 style="margin-bottom: 4px;">Proposal conversion</h5>
+            <small>Visits that turn into signed projects</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIAL ═══════════ -->
+    <section class="section-dark" data-animate>
+      <div class="container">
+        <div class="card" style="max-width: 800px; margin: 0 auto; padding: 48px; text-align: center;">
+          <p style="font-size: var(--text-xl); color: var(--color-text-primary); font-weight: var(--font-medium); line-height: var(--leading-snug); margin-bottom: 24px;">
+            "We were spending half our week on calls with people who didn't own land or couldn't afford our fee.
+            Now the bot filters them out before they hit our calendar — and the briefs that arrive are ready to quote."
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+            <div style="width: 48px; height: 48px; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--color-accent-pink-500), var(--color-accent-purple-400));"></div>
+            <div style="text-align: left;">
+              <p style="color: var(--color-text-primary); font-weight: var(--font-semibold); margin-bottom: 0;">Founding Partner</p>
+              <small>Architecture Studio · Residential + Commercial</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FAQ ═══════════ -->
+    <section data-animate>
+      <div class="container" style="max-width: 800px;">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">Frequently Asked Questions</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">Will the bot turn away good clients who don't fit the script?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">No — the bot collects context and escalates edge cases to a human. We design the qualification flow to capture nuance, not force a yes/no. Partners always get the final call.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">How does the bot collect technical info (area, type, etc.)?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">Through a friendly, structured WhatsApp menu and a few well-placed free-text questions — not a 20-field form. Most prospects complete it in under 3 minutes. Anything missing gets asked at the visit.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">Does the system respect CAU advertising rules?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">Yes. No superlative claims, no comparative advertising, no false attribution. Every portfolio claim is reviewed against Resolução CAU 91/2014 and your state's regional guidance before publishing.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">What if our studio specializes in something unusual?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">The qualification flow is built around your studio — not a generic template. Whether you specialize in healthcare, heritage restoration, or retail rollouts, the bot menu reflects your actual practice areas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">How long until we see qualified leads?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">First qualified site visit typically within 14 days of launch — depending on existing traffic. We also tune your portfolio pages for organic search, so qualified inbound compounds month over month.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FINAL CTA ═══════════ -->
+    <section class="gradient-hero" data-animate>
+      <div class="container" style="text-align: center;">
+        <span class="badge badge--accent" style="margin-bottom: 24px;">For Architecture Firms</span>
+        <h2 style="margin-bottom: 20px;">Stop wasting senior hours<br>on inquiries that were never a fit.</h2>
+        <p style="max-width: 640px; margin: 0 auto 32px;">
+          Free 30-minute diagnosis. We'll map your current intake, show you the off-strategy hours you're losing,
+          and tell you exactly what it would take to fix them — no commitment.
+        </p>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="../services/ai-automation.html" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="../services/web-development.html" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="../services/ecommerce.html" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="../services/index.html" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="dental-aesthetics.html">Dental Aesthetics</a></li>
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-clinics.html">Medical Clinics</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/language.js"></script>
+  <script src="../js/faq.js"></script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!--
+  E-commerce Service (/services/ecommerce)
+  Hero + What's Included + Platforms Comparison (BR vs Global) + CTA
+  Depends on: ../css/tokens.css + ../css/base.css + ../css/components.css + ../css/animations.css
+  JS:        ../js/main.js + ../js/language.js
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce — Online Stores Built to Sell From Day One</title>
+  <meta name="description" content="Shopify or WooCommerce, fully configured for Brazil and global markets. Payments, shipping, and the essential pages you can't launch without — all wired in.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* ── Page-scoped styles for /services/ecommerce ── */
+
+    .section-header {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    .section-header__eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--color-accent-pink-300);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .section-header__title {
+      margin-bottom: 16px;
+    }
+    .section-header__lede {
+      font-size: var(--text-md);
+      line-height: var(--leading-normal);
+    }
+
+    .page-hero {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      text-align: center;
+    }
+    .page-hero__eyebrow {
+      display: inline-flex;
+      margin-bottom: 20px;
+    }
+    .page-hero__title {
+      max-width: 880px;
+      margin: 0 auto 20px;
+    }
+    .page-hero__lede {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      font-size: var(--text-md);
+      line-height: var(--leading-normal);
+    }
+    .page-hero__actions {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    /* ── Checklist ── */
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 32px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .checklist__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: var(--text-md);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+    .checklist__item::before {
+      content: '\2713';
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent-pink-500);
+      color: var(--color-text-primary);
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      line-height: 1;
+    }
+
+    /* ── Platforms comparison ── */
+    .platforms {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--grid-gap);
+    }
+    .platform {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .platform:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-border-light);
+      box-shadow: var(--shadow-lg);
+    }
+    .platform__flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-white-06);
+      border: 1px solid var(--color-border-subtle);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      width: fit-content;
+    }
+    .platform__heading {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: -0.8px;
+      line-height: var(--leading-snug);
+      color: var(--color-text-primary);
+    }
+    .platform__sub {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+    .platform__divider {
+      height: 1px;
+      background: var(--color-border-subtle);
+    }
+    .platform__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .platform__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: var(--text-base);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+    .platform__item::before {
+      content: '\2713';
+      flex-shrink: 0;
+      color: var(--color-accent-pink-400);
+      font-weight: var(--font-semibold);
+    }
+    .platform__cta {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    /* ── Why us strip ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--grid-gap);
+    }
+    .why {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+    }
+    .why__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-xl);
+      background: var(--color-bg-accent-glow);
+      border: 1px solid var(--color-border-light);
+      font-size: 22px;
+      line-height: 1;
+    }
+    .why__heading {
+      font-size: var(--text-md);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+    }
+    .why__body {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    @media (max-width: 1024px) {
+      .platforms {
+        grid-template-columns: 1fr;
+      }
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero {
+        padding-top: 96px;
+        padding-bottom: 56px;
+      }
+      .checklist {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="/services" data-i18n="nav.services">Services</a></li>
+          <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="/about" data-i18n="nav.about">About</a></li>
+          <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="/services" data-i18n="nav.services">Services</a></li>
+        <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="/about" data-i18n="nav.about">About</a></li>
+        <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="gradient-hero page-hero" aria-labelledby="ecom-hero-title" data-animate>
+      <div class="container">
+        <span class="badge page-hero__eyebrow" data-i18n="services.ecomBadge">E-commerce</span>
+        <h1 id="ecom-hero-title" class="page-hero__title" data-i18n="services.ecomTitle">Online Stores Built to Sell From Day One</h1>
+        <p class="page-hero__lede">
+          Complete e-commerce &mdash; Shopify or WooCommerce. You focus on the product, we focus on the sale.
+        </p>
+        <div class="page-hero__actions">
+          <a href="/contact" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          <a href="#platforms" class="btn-secondary" data-i18n="cta.secondary">See How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT'S INCLUDED ============ -->
+    <section aria-labelledby="ecom-included-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.ecomIncludedEyebrow">What you get</span>
+          <h2 id="ecom-included-title" class="section-header__title">Launch-ready, not &ldquo;we&rsquo;ll add that later.&rdquo;</h2>
+          <p class="section-header__lede">
+            Every store ships with the essentials wired up &mdash; from product pages to policy documents &mdash; so you can take your first order the day you launch.
+          </p>
+        </header>
+
+        <ul class="checklist" aria-label="What is included">
+          <li class="checklist__item">Custom theme setup</li>
+          <li class="checklist__item">Products listed</li>
+          <li class="checklist__item">Payment gateway configured</li>
+          <li class="checklist__item">Shipping setup</li>
+          <li class="checklist__item">Essential pages (About, Contact, FAQ, Policies)</li>
+          <li class="checklist__item">Basic SEO</li>
+          <li class="checklist__item">Mobile-responsive</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PLATFORMS ============ -->
+    <section class="section-dark" id="platforms" aria-labelledby="platforms-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow">Choose your market</span>
+          <h2 id="platforms-title" class="section-header__title">Brazil or global &mdash; we configure both natively.</h2>
+          <p class="section-header__lede">
+            Different markets, different rails. We pick the stack that fits your region, your payment methods, and your growth plan.
+          </p>
+        </header>
+
+        <div class="platforms">
+          <!-- Brazil — WooCommerce -->
+          <article class="platform">
+            <span class="platform__flag">&#127463;&#127479; Brazil</span>
+            <h3 class="platform__heading">WooCommerce &middot; built for Brazil</h3>
+            <p class="platform__sub">
+              Native Pix, Boleto, and credit-card installments. NF-e ready. Brazilian Portuguese store copy and checkout flow from day one.
+            </p>
+            <span class="platform__divider" aria-hidden="true"></span>
+            <ul class="platform__list" aria-label="Brazil package">
+              <li class="platform__item">WooCommerce stores</li>
+              <li class="platform__item">Custom theme (mobile-first, fast)</li>
+              <li class="platform__item">Full setup &mdash; products, pages, policies</li>
+              <li class="platform__item">Pix, Boleto, and installment payments</li>
+              <li class="platform__item">Shipping &amp; NF-e ready</li>
+            </ul>
+            <a href="/contact" class="btn-primary platform__cta">Get Your Free Diagnosis &rarr;</a>
+          </article>
+
+          <!-- USA/Global — Shopify -->
+          <article class="platform">
+            <span class="platform__flag">&#127482;&#127480; USA / Global</span>
+            <h3 class="platform__heading">Shopify &middot; built for global scale</h3>
+            <p class="platform__sub">
+              Stripe-powered checkout, multi-currency, and the Shopify App Store ecosystem. Multi-region stores with one back office.
+            </p>
+            <span class="platform__divider" aria-hidden="true"></span>
+            <ul class="platform__list" aria-label="Global package">
+              <li class="platform__item">Shopify stores</li>
+              <li class="platform__item">Custom theme (mobile-first, fast)</li>
+              <li class="platform__item">Full setup &mdash; products, pages, policies</li>
+              <li class="platform__item">Payments, multi-currency, tax &amp; shipping</li>
+              <li class="platform__item">Multi-region ready</li>
+            </ul>
+            <a href="/contact" class="btn-primary platform__cta">Get Your Free Diagnosis &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY US ============ -->
+    <section aria-labelledby="why-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow">Why us</span>
+          <h2 id="why-title" class="section-header__title">You&rsquo;re not getting a template. You&rsquo;re getting a revenue-ready store.</h2>
+        </header>
+
+        <div class="why-grid">
+          <article class="why">
+            <span class="why__icon" aria-hidden="true">&#9889;</span>
+            <h4 class="why__heading">Launch in days, not months</h4>
+            <p class="why__body">From kickoff to first order in 10&ndash;21 days, depending on catalog size. No multi-week discovery phases.</p>
+          </article>
+          <article class="why">
+            <span class="why__icon" aria-hidden="true">&#128176;</span>
+            <h4 class="why__heading">Payments that actually work</h4>
+            <p class="why__body">Pix in Brazil, Stripe globally, installments where they convert. We wire the gateway that fits the market.</p>
+          </article>
+          <article class="why">
+            <span class="why__icon" aria-hidden="true">&#128241;</span>
+            <h4 class="why__heading">Mobile-first by default</h4>
+            <p class="why__body">70%+ of e-commerce traffic is mobile. Every store is built and QA&rsquo;d on a phone before it ships.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="gradient-hero" aria-labelledby="ecom-final-cta-title" data-animate>
+      <div class="container" style="text-align: center;">
+        <h2 id="ecom-final-cta-title">Launch Your Online Store</h2>
+        <p style="max-width: 560px; margin: 20px auto 32px;">
+          Pricing is custom &mdash; it depends on catalog size, platform, and integrations. Get a free diagnosis and we&rsquo;ll recommend the right stack &mdash; with a fixed timeline and fixed cost.
+        </p>
+        <a href="/contact" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="/services/ai-automation" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="/services/web-development" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="/services/ecommerce" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="/services" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="/industries/dental-aesthetics" data-i18n="footer.dentalAesthetics">Dental Aesthetics</a></li>
+            <li><a href="/industries/law-firms" data-i18n="footer.lawFirms">Law Firms</a></li>
+            <li><a href="/industries/medical-clinics" data-i18n="footer.medicalClinics">Medical Clinics</a></li>
+            <li><a href="/industries/architecture" data-i18n="footer.architecture">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="/about" data-i18n="nav.about">About</a></li>
+            <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/language.js"></script>
+</body>
+</html>

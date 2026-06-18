@@ -1,0 +1,933 @@
+<!--
+  AI Automation Service (/services/ai-automation)
+  Hero + Problem/Solution + Features + What's Included + How It Works
+  + Tiers + Case Study + FAQ + Final CTA
+  Depends on: ../css/tokens.css + ../css/base.css + ../css/components.css + ../css/animations.css
+  JS:        ../js/main.js + ../js/language.js + ../js/faq.js
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Automation — Your 24/7 Revenue Engine</title>
+  <meta name="description" content="AI-powered WhatsApp and Instagram automation that captures, qualifies, and books every lead — while you sleep. Installed in 7 business days.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* ── Page-scoped styles for /services/ai-automation ── */
+
+    /* Shared section header pattern */
+    .section-header {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    .section-header__eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--color-accent-pink-300);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .section-header__title {
+      margin-bottom: 16px;
+    }
+    .section-header__lede {
+      font-size: var(--text-md);
+      line-height: var(--leading-normal);
+    }
+
+    /* ── Hero ── */
+    .page-hero {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      text-align: center;
+    }
+    .page-hero__eyebrow {
+      display: inline-flex;
+      margin-bottom: 20px;
+    }
+    .page-hero__title {
+      max-width: 880px;
+      margin: 0 auto 20px;
+    }
+    .page-hero__lede {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      font-size: var(--text-md);
+      line-height: var(--leading-normal);
+    }
+    .page-hero__actions {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    /* ── Problem / Solution split ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--grid-gap);
+    }
+    .split__col {
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-secondary);
+    }
+    .split__col--problem {
+      background: linear-gradient(160deg, rgba(244, 63, 94, 0.06), rgba(244, 63, 94, 0));
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+    .split__col--solution {
+      background: linear-gradient(160deg, var(--color-bg-accent-glow), rgba(244, 114, 182, 0));
+      border-color: var(--color-accent-pink-500);
+    }
+    .split__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+    .split__col--solution .split__label {
+      color: var(--color-accent-pink-300);
+    }
+    .split__heading {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-snug);
+      margin-bottom: 12px;
+    }
+    .split__body {
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Features grid (3x2 cards) ── */
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+    }
+    .feature-card__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-xl);
+      background: var(--color-bg-accent-glow);
+      border: 1px solid var(--color-border-light);
+      font-size: 26px;
+      line-height: 1;
+    }
+    .feature-card__title {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+    }
+    .feature-card__body {
+      color: var(--color-text-secondary);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+    }
+
+    /* ── Checklist ── */
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 32px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .checklist__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: var(--text-md);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+    .checklist__item::before {
+      content: '\2713';
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent-pink-500);
+      color: var(--color-text-primary);
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      line-height: 1;
+    }
+
+    /* ── Vertical timeline ── */
+    .timeline {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding-left: 32px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      left: 11px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--color-accent-pink-500), var(--color-accent-purple-400));
+      opacity: 0.4;
+    }
+    .timeline__step {
+      position: relative;
+      padding: 0 0 32px 24px;
+    }
+    .timeline__step:last-child {
+      padding-bottom: 0;
+    }
+    .timeline__step::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: -25px;
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-primary);
+      border: 3px solid var(--color-accent-pink-500);
+      box-shadow: 0 0 16px var(--color-bg-accent-glow);
+    }
+    .timeline__day {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-accent-pink-300);
+      margin-bottom: 4px;
+    }
+    .timeline__heading {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      margin-bottom: 4px;
+    }
+    .timeline__body {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* ── Tiers ── */
+    .tier {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+      padding: 32px 24px;
+    }
+    .tier__name {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+    .tier__heading {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+    }
+    .tier__line {
+      height: 1px;
+      background: var(--color-border-subtle);
+    }
+    .tier__list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-grow: 1;
+    }
+    .tier__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      color: var(--color-text-primary);
+    }
+    .tier__list li::before {
+      content: '\2713';
+      flex-shrink: 0;
+      color: var(--color-accent-pink-400);
+      font-weight: var(--font-semibold);
+    }
+    .tier__cta {
+      width: 100%;
+      margin-top: auto;
+    }
+    .tier--featured {
+      border-color: var(--color-accent-pink-500);
+      box-shadow: 0 0 0 1px var(--color-accent-pink-500), 0 0 32px var(--color-bg-accent-glow);
+    }
+    .tier__badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--color-accent-pink-500), var(--color-accent-purple-400));
+      color: var(--color-text-primary);
+      font-size: var(--text-xs);
+      font-weight: var(--font-bold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-sm);
+      white-space: nowrap;
+    }
+
+    /* ── Case study ── */
+    .case-study {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--grid-gap);
+      align-items: center;
+    }
+    .case-study__quote {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: -0.8px;
+      line-height: var(--leading-snug);
+      color: var(--color-text-primary);
+      margin-bottom: 24px;
+    }
+    .case-study__quote::before {
+      content: '\201C';
+      display: block;
+      font-size: 56px;
+      line-height: 1;
+      color: var(--color-accent-pink-500);
+      margin-bottom: 8px;
+    }
+    .case-study__stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 32px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-accent-glow);
+      border: 1px solid var(--color-accent-pink-500);
+    }
+    .case-study__number {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-snug);
+      line-height: var(--leading-tight);
+      color: var(--color-text-primary);
+    }
+    .case-study__caption {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-normal);
+    }
+
+    /* ── FAQ accordion ── */
+    .faq {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-secondary);
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .faq-item.active {
+      border-color: var(--color-accent-pink-500);
+      box-shadow: 0 0 0 1px var(--color-accent-pink-500), 0 0 24px var(--color-bg-accent-glow);
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      padding: 20px 24px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--color-text-primary);
+      font-size: var(--text-md);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-snug);
+    }
+    .faq-question__icon {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-white-06);
+      color: var(--color-text-primary);
+      font-size: var(--text-md);
+      font-weight: var(--font-bold);
+      line-height: 1;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .faq-item.active .faq-question__icon {
+      transform: rotate(45deg);
+      background: var(--color-accent-pink-500);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-answer__inner {
+      padding: 0 24px 24px;
+      color: var(--color-text-secondary);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .split,
+      .case-study {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero {
+        padding-top: 96px;
+        padding-bottom: 56px;
+      }
+
+      .checklist {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .timeline {
+        padding-left: 24px;
+      }
+
+      .timeline::before {
+        left: 7px;
+      }
+
+      .timeline__step::before {
+        left: -21px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="/services" data-i18n="nav.services">Services</a></li>
+          <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="/about" data-i18n="nav.about">About</a></li>
+          <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="/services" data-i18n="nav.services">Services</a></li>
+        <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="/about" data-i18n="nav.about">About</a></li>
+        <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="gradient-hero page-hero" aria-labelledby="ai-hero-title" data-animate>
+      <div class="container">
+        <span class="badge page-hero__eyebrow" data-i18n="services.aiBadge">AI Automation</span>
+        <h1 id="ai-hero-title" class="page-hero__title" data-i18n="services.aiTitle">Your 24/7 Revenue Engine</h1>
+        <p class="page-hero__lede" data-i18n="services.aiLede">AI-powered WhatsApp &amp; Instagram automation that captures, qualifies, and books every lead &mdash; while you sleep.</p>
+        <div class="page-hero__actions">
+          <a href="/contact" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          <a href="#how-it-works" class="btn-secondary" data-i18n="cta.secondary">See How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEM → SOLUTION ============ -->
+    <section aria-labelledby="problem-solution-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.aiProblemEyebrow">The gap</span>
+          <h2 id="problem-solution-title" class="section-header__title" data-i18n="services.aiProblemTitle">Every unanswered lead is revenue you can&rsquo;t recover.</h2>
+        </header>
+
+        <div class="split">
+          <div class="split__col split__col--problem">
+            <span class="split__label" data-i18n="services.aiWithout">Without automation</span>
+            <h3 class="split__heading" data-i18n="services.aiWithoutTitle">Every minute a lead goes unanswered, you lose revenue.</h3>
+            <p class="split__body">
+              Most leads go cold in under 10 minutes. By the time your team replies &mdash; if they reply at all &mdash; the prospect has already booked with a competitor who was faster.
+            </p>
+          </div>
+
+          <div class="split__col split__col--solution">
+            <span class="split__label" data-i18n="services.aiWith">With our system</span>
+            <h3 class="split__heading" data-i18n="services.aiWithTitle">Our system responds in &lt;1 minute, 24/7. Every channel.</h3>
+            <p class="split__body">
+              A WhatsApp or Instagram DM lands, the bot greets the lead, qualifies intent, and books a call into your calendar &mdash; before your phone even buzzes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES GRID ============ -->
+    <section class="section-dark" aria-labelledby="features-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.aiFeaturesEyebrow">What the system does</span>
+          <h2 id="features-title" class="section-header__title" data-i18n="services.aiFeaturesTitle">Six modules. One revenue loop.</h2>
+          <p class="section-header__lede" data-i18n="services.aiFeaturesLede">Every component is wired together so a lead becomes a booked call without anyone on your team lifting a finger.</p>
+        </header>
+
+        <div class="grid grid-3">
+          <article class="card feature-card">
+            <span class="feature-card__icon" aria-hidden="true">&#128172;</span>
+            <h3 class="feature-card__title" data-i18n="services.aiFeatureWhatsapp">WhatsApp Bot</h3>
+            <p class="feature-card__body">
+              The official WhatsApp Business API configured, with auto-replies, qualification flows, and handoff to a human when intent requires it.
+            </p>
+          </article>
+
+          <article class="card feature-card">
+            <span class="feature-card__icon" aria-hidden="true">&#128247;</span>
+            <h3 class="feature-card__title" data-i18n="services.aiFeatureInstagram">Instagram DM Bot</h3>
+            <p class="feature-card__body">
+              Captures every DM, story reply, and comment lead. Same qualification flow as WhatsApp &mdash; centralized in one inbox.
+            </p>
+          </article>
+
+          <article class="card feature-card">
+            <span class="feature-card__icon" aria-hidden="true">&#128260;</span>
+            <h3 class="feature-card__title" data-i18n="services.aiFeatureFollowup">Auto Follow-Up</h3>
+            <p class="feature-card__body">
+              7-day and 14-day reactivation sequences. Leads who didn&rsquo;t book the first time get a second (and third) touch &mdash; automatically.
+            </p>
+          </article>
+
+          <article class="card feature-card">
+            <span class="feature-card__icon" aria-hidden="true">&#128202;</span>
+            <h3 class="feature-card__title" data-i18n="services.aiFeatureCrm">CRM Dashboard</h3>
+            <p class="feature-card__body">
+              Real-time pipeline view: Lead &rarr; Qualified &rarr; Booked &rarr; Converted. Filters, tags, and exports built in.
+            </p>
+          </article>
+
+          <article class="card feature-card">
+            <span class="feature-card__icon" aria-hidden="true">&#128197;</span>
+            <h3 class="feature-card__title" data-i18n="services.aiFeatureBooking">Smart Booking</h3>
+            <p class="feature-card__body">
+              Books directly into your Google or Outlook calendar. Sends confirmations, reminders, and reschedule links without a back-and-forth.
+            </p>
+          </article>
+
+          <article class="card feature-card">
+            <span class="feature-card__icon" aria-hidden="true">&#128200;</span>
+            <h3 class="feature-card__title" data-i18n="services.aiFeatureMetrics">Revenue Metrics</h3>
+            <p class="feature-card__body">
+              Track response time, conversion rate, and revenue per channel. Know which sources are paying for themselves &mdash; and which aren&rsquo;t.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT'S INCLUDED ============ -->
+    <section aria-labelledby="included-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.aiIncludedEyebrow">What you get</span>
+          <h2 id="included-title" class="section-header__title" data-i18n="services.aiIncludedTitle">Everything you need, installed and turned on.</h2>
+          <p class="section-header__lede" data-i18n="services.aiIncludedLede">No add-ons, no upsells. The full system, configured for your business, ready to capture leads from day one.</p>
+        </header>
+
+        <ul class="checklist" aria-label="What is included">
+          <li class="checklist__item">WhatsApp Business API configured</li>
+          <li class="checklist__item">Instagram DM automation</li>
+          <li class="checklist__item">Qualification flow (asks the right questions)</li>
+          <li class="checklist__item">Auto-booking into your calendar</li>
+          <li class="checklist__item">Follow-up sequences (7-day, 14-day reactivation)</li>
+          <li class="checklist__item">CRM pipeline (Lead &rarr; Qualified &rarr; Booked &rarr; Converted)</li>
+          <li class="checklist__item">Real-time dashboard</li>
+          <li class="checklist__item">15-minute team training</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section-dark" id="how-it-works" aria-labelledby="hiw-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.aiHowEyebrow">Delivery in 7 days</span>
+          <h2 id="hiw-title" class="section-header__title" data-i18n="services.aiHowTitle">How It Works</h2>
+          <p class="section-header__lede" data-i18n="services.aiHowLede">From kickoff to live system in one working week. You stay focused on your business &mdash; we handle the plumbing.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline__step">
+            <span class="timeline__day" data-i18n="services.aiDay1">Day 1 &middot; Diagnosis</span>
+            <h3 class="timeline__heading" data-i18n="services.aiDay1Title">We audit your lead flow</h3>
+            <p class="timeline__body">
+              We map where leads come from, how they&rsquo;re currently handled, and where they&rsquo;re slipping through. The diagnosis shapes the bot script.
+            </p>
+          </li>
+
+          <li class="timeline__step">
+            <span class="timeline__day" data-i18n="services.aiDays25">Days 2&ndash;5 &middot; Build</span>
+            <h3 class="timeline__heading" data-i18n="services.aiDay25Title">We configure everything</h3>
+            <p class="timeline__body">
+              WhatsApp API, Instagram automation, qualification flow, calendar, CRM, follow-up sequences &mdash; configured end-to-end for your offer.
+            </p>
+          </li>
+
+          <li class="timeline__step">
+            <span class="timeline__day" data-i18n="services.aiDay6">Day 6 &middot; Test</span>
+            <h3 class="timeline__heading" data-i18n="services.aiDay6Title">Simulate real leads</h3>
+            <p class="timeline__body">
+              We send 20+ test inquiries through the system, edge cases included. Anything off gets fixed before handoff.
+            </p>
+          </li>
+
+          <li class="timeline__step">
+            <span class="timeline__day" data-i18n="services.aiDay7">Day 7 &middot; Train</span>
+            <h3 class="timeline__heading" data-i18n="services.aiDay7Title">Quick team walkthrough</h3>
+            <p class="timeline__body">
+              A 15-minute session with anyone who&rsquo;ll see leads: how to read the dashboard, when to jump in, and how to read the alerts.
+            </p>
+          </li>
+
+          <li class="timeline__step">
+            <span class="timeline__day" data-i18n="services.aiDay8">Day 8 &middot; Go Live</span>
+            <h3 class="timeline__heading" data-i18n="services.aiDay8Title">System running 24/7</h3>
+            <p class="timeline__body">
+              The bot is on. Every new DM triggers the flow. Your CRM starts filling. We&rsquo;re on call for the first two weeks.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ TIERS ============ -->
+    <section aria-labelledby="tiers-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.aiTiersEyebrow">Choose your starting point</span>
+          <h2 id="tiers-title" class="section-header__title" data-i18n="services.aiTiersTitle">Three ways to install the system.</h2>
+          <p class="section-header__lede" data-i18n="services.aiTiersLede">Pricing is custom &mdash; it depends on your channels, volume, and integrations. Get a free diagnosis and we&rsquo;ll recommend the right tier.</p>
+        </header>
+
+        <div class="grid grid-3">
+          <!-- Tier 1 — Starter -->
+          <article class="card tier">
+            <span class="tier__name" data-i18n="services.aiStarterLine">&#11015; Starter</span>
+            <h3 class="tier__heading" data-i18n="services.aiCaptureBasics">Capture the basics</h3>
+            <span class="tier__line" aria-hidden="true"></span>
+            <ul class="tier__list">
+              <li>WhatsApp + Instagram bot</li>
+              <li>Auto responses</li>
+              <li>FAQ menu</li>
+            </ul>
+            <a href="/contact" class="btn-secondary tier__cta" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          </article>
+
+          <!-- Tier 2 — Core (Featured) -->
+          <article class="card tier tier--featured">
+            <span class="tier__badge" data-i18n="services.aiMostPopular">Most Popular</span>
+            <span class="tier__name" data-i18n="services.aiCoreLine">&#127919; Core</span>
+            <h3 class="tier__heading" data-i18n="services.aiFullLoop">The full revenue loop</h3>
+            <span class="tier__line" aria-hidden="true"></span>
+            <ul class="tier__list">
+              <li>Everything in Starter, PLUS:</li>
+              <li>CRM dashboard</li>
+              <li>Auto follow-up sequences</li>
+              <li>Booking system</li>
+              <li>Website / landing page</li>
+              <li>Metrics &amp; reporting</li>
+            </ul>
+            <a href="/contact" class="btn-primary tier__cta" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          </article>
+
+          <!-- Tier 3 — Growth -->
+          <article class="card tier">
+            <span class="tier__name" data-i18n="services.aiGrowthLine">&#11014; Growth</span>
+            <h3 class="tier__heading" data-i18n="services.aiScale">Multi-channel scale</h3>
+            <span class="tier__line" aria-hidden="true"></span>
+            <ul class="tier__list">
+              <li>Core, PLUS:</li>
+              <li>Social media automation</li>
+              <li>Content templates</li>
+              <li>Multi-platform expansion</li>
+            </ul>
+            <a href="/contact" class="btn-secondary tier__cta" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDY TEASER ============ -->
+    <section class="section-dark" aria-labelledby="case-study-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.aiCaseEyebrow">Proof</span>
+          <h2 id="case-study-title" class="section-header__title" data-i18n="services.aiCaseTitle">Built once. Running every day since.</h2>
+        </header>
+
+        <div class="case-study">
+          <div>
+            <p class="case-study__quote">
+              [Clinic Name] went from 0 automated responses to handling 100+ leads/month &mdash; with zero additional staff.
+            </p>
+            <a href="/blog" class="btn-secondary" data-i18n="services.aiCaseCta">Read the Full Story &rarr;</a>
+          </div>
+
+          <aside class="case-study__stat" aria-label="Case study highlights" data-i18n-aria-label="aria.caseStudyHighlights">
+            <span class="case-study__number">100+</span>
+            <span class="case-study__caption">leads handled per month, automated</span>
+            <span class="case-study__number" style="margin-top: 16px;">&lt;1 min</span>
+            <span class="case-study__caption">average response time, 24/7</span>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section aria-labelledby="faq-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.aiFaqEyebrow">FAQ</span>
+          <h2 id="faq-title" class="section-header__title" data-i18n="services.aiFaqTitle">Common questions, answered.</h2>
+        </header>
+
+        <div class="faq">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>How fast does the bot respond?</span>
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer__inner">
+                Under one minute, 24/7. The bot is triggered the moment a lead lands in WhatsApp or Instagram &mdash; even at 3 a.m. on a Sunday.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Does it work on WhatsApp and Instagram?</span>
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer__inner">
+                Yes &mdash; both. We use the official WhatsApp Business API for WhatsApp and Meta-approved automation for Instagram DMs. Same qualification flow, same dashboard.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Can it book appointments?</span>
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer__inner">
+                Yes. The bot syncs with your Google or Outlook calendar, proposes available slots, and confirms the booking &mdash; all inside the chat. Confirmations and reminders go out automatically.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>What if a lead needs a human?</span>
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer__inner">
+                Seamless handoff. When a lead asks for a human, uses a trigger phrase, or escalates beyond the bot&rsquo;s scope, the conversation routes to your team with full context attached.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>How long until it&rsquo;s live?</span>
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer__inner">
+                Seven business days from kickoff. Day 1 is diagnosis, days 2&ndash;5 are build, day 6 is testing, day 7 is your team walkthrough. The system goes live on day 8.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="gradient-hero" aria-labelledby="ai-final-cta-title" data-animate>
+      <div class="container" style="text-align: center;">
+        <h2 id="ai-final-cta-title" data-i18n="services.aiFinalTitle">Your competitors are already automating.<br>Every day you wait is revenue lost.</h2>
+        <p style="max-width: 560px; margin: 20px auto 32px;" data-i18n="services.aiFinalLede">Get a free 30-minute diagnosis. We&rsquo;ll show you which channels to automate first, what it costs, and what revenue it unlocks in the first 90 days.</p>
+        <a href="/contact" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="/services/ai-automation" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="/services/web-development" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="/services/ecommerce" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="/services" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="/industries/dental-aesthetics" data-i18n="footer.dentalAesthetics">Dental Aesthetics</a></li>
+            <li><a href="/industries/law-firms" data-i18n="footer.lawFirms">Law Firms</a></li>
+            <li><a href="/industries/medical-clinics" data-i18n="footer.medicalClinics">Medical Clinics</a></li>
+            <li><a href="/industries/architecture" data-i18n="footer.architecture">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="/about" data-i18n="nav.about">About</a></li>
+            <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/faq.js"></script>
+  <script src="../js/language.js"></script>
+</body>
+</html>

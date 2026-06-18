@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch. Book a free 15-minute diagnosis and we'll show you where your business is leaking revenue — and how to fix it.">
+  <meta name="theme-color" content="#080C21">
+  <title>Contact — Brand | Get Your Free Diagnosis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    /* Contact-scoped styles — design tokens only, no hardcoded hex.
+       Reuses existing utilities: .section-head, .card, .btn-primary, .gradient-hero, .cta-final */
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      padding: 120px 0 64px;
+      text-align: center;
+    }
+    @media (max-width: 768px) { .hero { padding: 72px 0 48px; } }
+    .hero__headline { max-width: 880px; margin: 0 auto 20px; }
+    .hero__subheadline {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Section head ─────────────────────────────────────── */
+    .section-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .section-head__eyebrow { display: inline-flex; margin-bottom: 16px; }
+    .section-head__title { margin-bottom: 16px; }
+    .section-head__lede {
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── Two-column layout: form + info ───────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ── Form card ────────────────────────────────────────── */
+    .form-card {
+      padding: 36px 32px;
+    }
+    @media (max-width: 640px) { .form-card { padding: 28px 20px; } }
+    .form-card__title { margin-bottom: 8px; }
+    .form-card__lede {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      margin-bottom: 28px;
+    }
+
+    /* ── Field primitives (consumed by js/form.js) ───────── */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .field:last-of-type { margin-bottom: 24px; }
+    .field__label {
+      font-size: var(--text-base-sm);
+      font-weight: var(--font-medium);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-normal);
+    }
+    .field__label .req { color: var(--color-accent-pink-400); margin-left: 2px; }
+    .field__control {
+      display: block;
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--color-bg-white-03);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      color: var(--color-text-primary);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      letter-spacing: var(--tracking-normal);
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .field__control:hover { border-color: var(--color-border-light); }
+    .field__control:focus-visible {
+      outline: none;
+      border-color: var(--color-accent-pink-500);
+      background: var(--color-bg-white-06);
+      box-shadow: 0 0 0 3px var(--color-bg-accent-glow);
+    }
+    .field__control[aria-invalid="true"] {
+      border-color: var(--color-accent-pink-500);
+      box-shadow: 0 0 0 3px var(--color-bg-accent-glow);
+    }
+    select.field__control {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, var(--color-text-secondary) 50%),
+                        linear-gradient(135deg, var(--color-text-secondary) 50%, transparent 50%);
+      background-position: calc(100% - 18px) center, calc(100% - 12px) center;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 36px;
+    }
+    textarea.field__control {
+      resize: vertical;
+      min-height: 120px;
+      font-family: var(--font-sans);
+    }
+    .field .error {
+      font-size: var(--text-sm);
+      color: var(--color-accent-pink-300);
+      min-height: 1em;
+    }
+
+    /* ── Submit + success message ─────────────────────────── */
+    .form-actions { margin-top: 8px; }
+    .form-actions .btn-primary { width: 100%; }
+    @media (min-width: 641px) {
+      .form-actions { text-align: right; }
+      .form-actions .btn-primary { width: auto; min-width: 220px; }
+    }
+    .success-message {
+      padding: 28px 24px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-white-03);
+      border: 1px solid var(--color-accent-pink-500);
+      color: var(--color-text-primary);
+      text-align: center;
+      box-shadow: 0 0 24px var(--color-bg-accent-glow);
+    }
+    .success-message__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent-pink-500);
+      color: var(--color-text-primary);
+      font-size: var(--text-xl);
+      margin-bottom: 16px;
+    }
+    .success-message__title {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: 8px;
+    }
+    .success-message__body {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Info card ────────────────────────────────────────── */
+    .info-card { padding: 32px 28px; }
+    .info-card__title {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: 6px;
+    }
+    .info-card__lede {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+    }
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .info-item__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-white-06);
+      border: 1px solid var(--color-border-subtle);
+      font-size: var(--text-md);
+      line-height: 1;
+    }
+    .info-item__body { display: flex; flex-direction: column; gap: 2px; }
+    .info-item__label {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      letter-spacing: var(--tracking-normal);
+      text-transform: uppercase;
+    }
+    .info-item__value {
+      font-size: var(--text-base);
+      color: var(--color-text-primary);
+      font-weight: var(--font-medium);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a.info-item__value:hover,
+    a.info-item__value:focus-visible {
+      color: var(--color-accent-pink-400);
+    }
+    .info-card__note {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    /* ── Scroll animation defaults (consumed by main.js) ── */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    [data-animate].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-animate] { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER (partial: partials/header.html)
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="/services" data-i18n="nav.services">Services</a></li>
+          <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="/about" data-i18n="nav.about">About</a></li>
+          <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary" data-i18n="cta.started" aria-current="page">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="/services" data-i18n="nav.services">Services</a></li>
+        <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="/about" data-i18n="nav.about">About</a></li>
+        <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary mobile-nav__cta" data-i18n="cta.started" aria-current="page">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="hero gradient-hero" aria-labelledby="hero-headline">
+      <div class="container">
+        <span class="hero__eyebrow badge badge--accent" data-i18n="contact.eyebrow">Contact</span>
+        <h1 id="hero-headline" class="hero__headline" data-i18n="contact.headline">
+          Let's map the leak in your business.
+        </h1>
+        <p class="hero__subheadline" data-i18n="contact.subheadline">
+          Book a free 15-minute diagnosis. We'll show you exactly where revenue is slipping &mdash; and what the fix looks like.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         CONTACT FORM + INFO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="contact-section" aria-labelledby="form-title" data-animate>
+      <div class="container">
+        <div class="contact-grid">
+          <!-- ── Form ────────────────────────────────────── -->
+          <div class="card form-card">
+            <h2 id="form-title" class="form-card__title" data-i18n="contact.formTitle">Send us a message</h2>
+            <p class="form-card__lede" data-i18n="contact.formLede">Tell us a bit about your business. We reply within one business day with diagnosis options.</p>
+
+            <form data-validate novalidate aria-describedby="form-status">
+              <div class="field">
+                <label class="field__label" for="contact-name" data-i18n="contact.formName">Name<span class="req" aria-hidden="true">*</span></label>
+                <input class="field__control" type="text" id="contact-name" name="name" required autocomplete="name" aria-required="true">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-email" data-i18n="contact.formEmail">Email<span class="req" aria-hidden="true">*</span></label>
+                <input class="field__control" type="email" id="contact-email" name="email" required autocomplete="email" aria-required="true">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-phone" data-i18n="contact.formPhone">Phone / WhatsApp</label>
+                <input class="field__control" type="tel" id="contact-phone" name="phone" autocomplete="tel">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-business" data-i18n="contact.formBusinessType">Business type<span class="req" aria-hidden="true">*</span></label>
+                <select class="field__control" id="contact-business" name="business_type" required aria-required="true">
+                  <option value="" disabled selected hidden data-i18n="contact.chooseIndustry">Choose your industry</option>
+                  <option value="dental-aesthetics" data-i18n="contact.optionDentalAesthetics">Dental Aesthetics</option>
+                  <option value="law-firm" data-i18n="contact.optionLawFirm">Law Firm</option>
+                  <option value="medical-clinic" data-i18n="contact.optionMedicalClinic">Medical Clinic</option>
+                  <option value="architecture" data-i18n="contact.optionArchitectureFirm">Architecture Firm</option>
+                  <option value="ecommerce" data-i18n="contact.optionEcommerce">E-commerce / Retail</option>
+                  <option value="other-services" data-i18n="contact.optionOtherServices">Other Service Business</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-looking" data-i18n="contact.formLookingFor">What are you looking for?<span class="req" aria-hidden="true">*</span></label>
+                <select class="field__control" id="contact-looking" name="looking_for" required aria-required="true">
+                  <option value="" disabled selected hidden data-i18n="contact.pickArea">Pick the area that fits</option>
+                  <option value="ai-automation" data-i18n="contact.optionAiAutomation">AI Automation</option>
+                  <option value="website" data-i18n="contact.optionWebsite">Website / Landing Page</option>
+                  <option value="ecommerce" data-i18n="contact.optionEcommerceStore">E-commerce Store</option>
+                  <option value="full-system" data-i18n="contact.optionFullSystem">Full Revenue System</option>
+                  <option value="other" data-i18n="contact.optionOther">Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="contact-message" data-i18n="contact.formMessage">Message</label>
+                <textarea class="field__control" id="contact-message" name="message" rows="5"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-primary" data-i18n="contact.formSubmit">Send Message &rarr;</button>
+              </div>
+            </form>
+
+            <div class="success-message" role="status" aria-live="polite" id="form-status" hidden>
+              <span class="success-message__icon" aria-hidden="true">&#10004;</span>
+              <p class="success-message__title" data-i18n="contact.successTitle">Message sent.</p>
+              <p class="success-message__body" data-i18n="contact.successBody">Thanks &mdash; we'll review your details and reply within one business day with next steps for your free diagnosis.</p>
+            </div>
+          </div>
+
+          <!-- ── Info ────────────────────────────────────── -->
+          <aside class="card info-card" aria-label="Direct contact details" data-i18n-aria-label="aria.contactDetails">
+            <h3 class="info-card__title" data-i18n="contact.infoTitle">Reach us directly</h3>
+            <p class="info-card__lede" data-i18n="contact.infoLede">Prefer a direct line? Pick the channel that suits you &mdash; we're on all of them.</p>
+
+            <ul class="info-list">
+              <li class="info-item">
+                <span class="info-item__icon" aria-hidden="true">&#128205;</span>
+                <div class="info-item__body">
+                  <span class="info-item__label" data-i18n="contact.infoLocation">Location</span>
+                  <span class="info-item__value">S&atilde;o Paulo, Brazil</span>
+                </div>
+              </li>
+
+              <li class="info-item">
+                <span class="info-item__icon" aria-hidden="true">&#9993;</span>
+                <div class="info-item__body">
+                  <span class="info-item__label" data-i18n="contact.infoWhatsapp">WhatsApp</span>
+                  <a class="info-item__value" href="https://wa.me/" rel="noopener" target="_blank">+55 (11) 0000-0000</a>
+                </div>
+              </li>
+
+              <li class="info-item">
+                <span class="info-item__icon" aria-hidden="true">&#9993;</span>
+                <div class="info-item__body">
+                  <span class="info-item__label" data-i18n="contact.infoEmail">Email</span>
+                  <a class="info-item__value" href="mailto:hello@brand.example">hello@brand.example</a>
+                </div>
+              </li>
+
+              <li class="info-item">
+                <span class="info-item__icon" aria-hidden="true">&#9679;</span>
+                <div class="info-item__body">
+                  <span class="info-item__label" data-i18n="contact.infoInstagram">Instagram</span>
+                  <a class="info-item__value" href="https://instagram.com/" rel="noopener" target="_blank">@brand</a>
+                </div>
+              </li>
+            </ul>
+
+            <p class="info-card__note" data-i18n="contact.infoNote">Online booking (Calendly) will be available soon &mdash; until then, the form is the fastest way to lock in your diagnosis.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════════════════ -->
+    <section class="cta-final" aria-labelledby="final-cta-title" data-animate>
+      <div class="container">
+        <h2 id="final-cta-title" class="cta-final__title" data-i18n="contact.finalTitle">Ready to stop losing leads?</h2>
+        <p class="cta-final__sub" data-i18n="contact.finalLede">15-minute call. We'll map your funnel, identify the leak, and quote only the system that fits.</p>
+        <a href="#form-title" class="btn-primary">Get Your Free Diagnosis &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER (partial: partials/footer.html)
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="/services/ai-automation" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="/services/web-development" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="/services/ecommerce" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="/services" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="/industries/dental-aesthetics" data-i18n="footer.dentalAesthetics">Dental Aesthetics</a></li>
+            <li><a href="/industries/law-firms" data-i18n="footer.lawFirms">Law Firms</a></li>
+            <li><a href="/industries/medical-clinics" data-i18n="footer.medicalClinics">Medical Clinics</a></li>
+            <li><a href="/industries/architecture" data-i18n="footer.architecture">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="/about" data-i18n="nav.about">About</a></li>
+            <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/language.js"></script>
+</body>
+</html>
