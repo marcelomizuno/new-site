@@ -1,0 +1,126 @@
+Task 6 — Industries Pages (2026-06-18)
+=======================================
+
+DELIVERABLES (all created)
+--------------------------
+✓ industries/index.html                341 lines, 19978 bytes
+✓ industries/dental-aesthetics.html    482 lines, 29837 bytes
+✓ industries/law-firms.html            481 lines, 30121 bytes
+✓ industries/medical-clinics.html      480 lines, 29917 bytes
+✓ industries/architecture.html         482 lines, 30462 bytes
+
+TAG BALANCE — all 5 files clean
+-------------------------------
+- html / body / main / header / footer: 1/1 on every page
+- div tags balanced: 76/76 (verticals), 44/44 (overview)
+- section tags balanced: 9/9 (verticals), 5/5 (overview)
+
+LINK INTEGRITY
+--------------
+- All 25 cross-industry hrefs resolve within industries/
+  (4 industries × cross-links to the other 4 verticals + index, all working)
+- All in-page anchor links resolve:
+    index.html      → #verticals  ✓
+    dental-aesthetics → #system  ✓
+    law-firms         → #system  ✓
+    medical-clinics   → #system  ✓
+    architecture      → #system  ✓
+- All 4 CSS files (tokens, base, components, animations) load via ../css/
+- JS files (main, language, faq) loaded via ../js/ on every page
+
+DESIGN SYSTEM COMPLIANCE
+------------------------
+Every page uses the design system as follows:
+
+Overview (index.html):
+  data-animate: 5 sections
+  data-i18n:    18 instances (nav + CTAs)
+  .card:        9 (4 industry cards + 5 metric tiles)
+  .btn-primary: 4 (header CTA, hero, mobile CTA, final CTA)
+
+Vertical pages (all 4):
+  data-animate: 9 sections each
+  data-i18n:    18 instances each
+  .faq-item:    5 each (Q&A pattern with .faq-question + .faq-answer)
+  .btn-primary: 4 each (header CTA, hero, final CTA, mobile CTA)
+  .card:        18 each (3-step flow × 3, how-it-works × 5, 4 metrics,
+                            testimonial, 2 system extras, 5 FAQ items, etc.)
+
+TEMPLATE STRUCTURE (consistent across all 4 verticals)
+------------------------------------------------------
+1. Hero (.gradient-hero) — industry-specific headline + sub
+2. The Problem — pain points list (✗ markers)
+3. Your Revenue System (.section-dark) — Capture → Qualify → Convert flow diagram
+                                     + 2 bonus cards (Website + Dashboard)
+4. How It Works — 5 numbered steps + 1 "Average lift" highlight card
+5. Compliance / Positioning (.section-dark) — regulator-specific (CFO/OAB/CFM/CAU)
+6. Metrics — 4 industry-specific KPIs
+7. Testimonial (.section-dark) — placeholder quote with avatar
+8. FAQ — 5 industry-specific questions in .faq-item pattern
+9. Final CTA (.gradient-hero) — "Get Your Free Diagnosis"
+
+INDUSTRY-SPECIFIC CONTENT
+-------------------------
+Dental Aesthetics:
+  - Hero: "Never Lose a Patient to a Slow Reply"
+  - Problem: "78% of dental leads choose the clinic that responds first"
+  - Bot menu: whitening, veneers, implants, Invisalign, cleaning
+  - Compliance: CFO-compliant (Resolução 162/2015)
+  - Lift: +62% booked consultations in first 60 days
+
+Law Firms:
+  - Hero: "Qualify Cases Before the First Call"
+  - Problem: "High-value clients expect instant response"
+  - Bot menu: family, business, labor, criminal
+  - Compliance: OAB-compliant (Provimento 205/2021)
+  - Lift: +47% qualified consultations booked per month
+
+Medical Clinics:
+  - Hero: "Your Schedule Stays Full — Automatically"
+  - Problem: "Empty slots cost clinics thousands per month"
+  - Bot menu: specialty, convênio, returning, urgent
+  - Compliance: CFM-compliant (Resolução 1.974/2011) + LGPD
+  - Lift: −40% no-show rate in first 60 days
+
+Architecture Firms:
+  - Hero: "Filter High-Value Leads, Automatically"
+  - Problem: "Not every inquiry is worth a proposal"
+  - Bot menu: residential/commercial/interior, scale, land area, ownership
+  - Compliance: CAU-aware (Resolução CAU 91/2014)
+  - Lift: +58% qualified site visits booked per month
+
+IMAGES / PLACEHOLDERS
+---------------------
+No <img> tags used — every visual is a colored div with linear-gradient
+background or emoji glyph (🦷 ⚖️ 🏥 🏗️) per the MUST NOT DO rule.
+
+PRICES
+------
+Zero prices shown on any page. Only "Free Diagnosis" CTAs (per MUST NOT DO).
+
+JS FRAMEWORKS
+-------------
+No frameworks added. Only existing vanilla js (main, language, faq) loaded.
+
+CONSTRAINTS HONORED
+-------------------
+✓ Files created only under industries/
+✓ Did not modify css/, js/, partials/, or any other existing file
+✓ No external images
+✓ No placeholder lorem ipsum text — all copy is industry-specific
+✓ All design tokens consumed (--text-*, --color-*, --radius-*, etc.)
+✓ Mobile-responsive (uses inherited .grid-*, .container, mobile-nav)
+✓ Accessibility: aria-labels on icon buttons, aria-expanded on FAQ,
+                 data-lang on language switcher, semantic <main>/<header>/<footer>
+
+CSS LOAD ORDER (consistent across all 5 files)
+-----------------------------------------------
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/animations.css">
+
+JS LOAD ORDER
+-------------
+Overview:   main.js + language.js
+Verticals:  main.js + language.js + faq.js (each has FAQ section)

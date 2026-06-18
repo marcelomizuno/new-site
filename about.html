@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="We build revenue machines for service businesses. Infrastructure that captures, qualifies, and converts every lead — 24/7, automatically.">
+  <meta name="theme-color" content="#080C21">
+  <title>About — Brand | We Build Revenue Machines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    /* About-scoped styles — design tokens only, no hardcoded hex.
+       Reuses existing utilities: .section-head, .card, .btn-primary, .gradient-hero, .cta-final */
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    @media (max-width: 768px) { .hero { padding: 72px 0 56px; } }
+    .hero__headline { max-width: 900px; margin: 0 auto 20px; }
+    .hero__subheadline {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Section head ─────────────────────────────────────── */
+    .section-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .section-head__eyebrow { display: inline-flex; margin-bottom: 16px; }
+    .section-head__title { margin-bottom: 16px; }
+    .section-head__lede {
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── Story block ──────────────────────────────────────── */
+    .story {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .story { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .story__copy h2 { margin-bottom: 20px; }
+    .story__copy p { margin-bottom: 16px; font-size: var(--text-md); }
+    .story__copy p:last-child { margin-bottom: 0; }
+
+    .story__visual {
+      position: relative;
+      aspect-ratio: 5 / 4;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border-subtle);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(236, 72, 153, 0.25) 0%, transparent 55%),
+        radial-gradient(circle at 80% 75%, rgba(192, 132, 252, 0.22) 0%, transparent 55%),
+        var(--color-bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .story__stat {
+      text-align: center;
+      padding: 32px;
+    }
+    .story__stat-value {
+      display: block;
+      font-size: var(--text-5xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-tight);
+      line-height: var(--leading-tight);
+      color: var(--color-text-primary);
+      margin-bottom: 8px;
+    }
+    @media (max-width: 768px) {
+      .story__stat-value { font-size: var(--text-3xl); }
+    }
+    .story__stat-label {
+      font-size: var(--text-md);
+      color: var(--color-text-secondary);
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* ── Values cards (3-up) ──────────────────────────────── */
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--grid-gap);
+    }
+    @media (max-width: 1024px) { .values { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+
+    .value-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px 28px;
+      height: 100%;
+    }
+    .value-card__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-xl);
+      background: var(--color-bg-accent-glow);
+      border: 1px solid var(--color-accent-pink-500);
+      font-size: var(--text-2xl);
+      line-height: 1;
+    }
+    .value-card__title {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-snug);
+    }
+    .value-card__body {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* ── Approach steps (4) ──────────────────────────────── */
+    .approach {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--grid-gap);
+      position: relative;
+    }
+    @media (max-width: 1024px) { .approach { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px)  { .approach { grid-template-columns: 1fr; } }
+
+    .approach-step {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 28px 24px;
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-2xl);
+      position: relative;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .approach-step:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-border-light);
+      box-shadow: var(--shadow-lg);
+    }
+    .approach-step__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--color-accent-pink-500), var(--color-accent-purple-400));
+      color: var(--color-text-primary);
+      font-size: var(--text-md);
+      font-weight: var(--font-semibold);
+      box-shadow: 0 0 16px var(--color-bg-accent-glow);
+    }
+    .approach-step__title {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-snug);
+    }
+    .approach-step__body {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+    .approach-step__arrow {
+      display: none;
+    }
+    @media (min-width: 1025px) {
+      .approach-step:not(:last-child)::after {
+        content: '\2192';
+        position: absolute;
+        top: 50%;
+        right: calc(var(--grid-gap) / -2 - 12px);
+        transform: translateY(-50%);
+        color: var(--color-accent-pink-500);
+        font-size: var(--text-lg);
+        font-weight: var(--font-semibold);
+        pointer-events: none;
+      }
+    }
+
+    /* ── Scroll animation defaults (consumed by main.js) ── */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    [data-animate].animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-animate] { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER (partial: partials/header.html)
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="/services" data-i18n="nav.services">Services</a></li>
+          <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="/about" data-i18n="nav.about" aria-current="page">About</a></li>
+          <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="/services" data-i18n="nav.services">Services</a></li>
+        <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="/about" data-i18n="nav.about" aria-current="page">About</a></li>
+        <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="hero gradient-hero" aria-labelledby="hero-headline">
+      <div class="container">
+        <span class="hero__eyebrow badge badge--accent" data-i18n="about.eyebrow">About</span>
+        <h1 id="hero-headline" class="hero__headline" data-i18n="about.headline">
+          We Build Revenue Machines
+        </h1>
+        <p class="hero__subheadline" data-i18n="about.subheadline">
+          Infrastructure that works while you focus on what you do best.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         OUR STORY
+         ═══════════════════════════════════════════════════════ -->
+    <section class="story-section" aria-labelledby="story-title" data-animate>
+      <div class="container">
+        <div class="story">
+          <div class="story__copy">
+            <span class="section-head__eyebrow badge" data-i18n="about.storyEyebrow">Our story</span>
+            <h2 id="story-title" class="section-head__title" style="text-align: left; max-width: none; margin: 16px 0 20px;">
+              We exist to stop the revenue leak most businesses never see.
+            </h2>
+            <p>
+              Service businesses lose leads every single day &mdash; not because the leads aren't there, but because no one answered fast enough. By the time a real human gets to the inbox, the prospect has already booked with someone else.
+            </p>
+            <p>
+              We started Brand after watching too many great operators &mdash; dentists, lawyers, clinicians, architects &mdash; work sixty-hour weeks and still wonder why growth had flatlined. The answer was almost always the same: the front door of the business was missing.
+            </p>
+            <p>
+              So we install the front door. WhatsApp bots that respond in under a minute. Instagram automations that qualify on autopilot. CRMs that surface what matters. Landing pages that convert. Built once, runs every day.
+            </p>
+          </div>
+
+          <div class="story__visual" aria-hidden="true">
+            <div class="story__stat">
+              <span class="story__stat-value">87%</span>
+              <p class="story__stat-label">
+                of leads we recover would have gone to a competitor within the first hour
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         OUR VALUES (3 cards)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="values-section section-dark" aria-labelledby="values-title" data-animate>
+      <div class="container">
+        <header class="section-head">
+          <span class="section-head__eyebrow badge" data-i18n="about.valuesEyebrow">What we stand for</span>
+          <h2 id="values-title" class="section-head__title" data-i18n="about.valuesTitle">Our Values</h2>
+          <p class="section-head__lede" data-i18n="about.valuesLede">Three principles guide every system we ship. They are not slogans &mdash; they are how we say no to bad-fit work.</p>
+        </header>
+
+        <div class="values">
+          <article class="card value-card">
+            <span class="value-card__icon" aria-hidden="true">&#127919;</span>
+            <h3 class="value-card__title" data-i18n="about.valuesRevenueFirst">Revenue-First</h3>
+            <p class="value-card__body">
+              We sell results, never tools. Every bot, page, and dashboard exists to put more qualified appointments on your calendar &mdash; not to look impressive on a demo.
+            </p>
+          </article>
+
+          <article class="card value-card">
+            <span class="value-card__icon" aria-hidden="true">&#9889;</span>
+            <h3 class="value-card__title" data-i18n="about.valuesSpeed">Speed</h3>
+            <p class="value-card__body">
+              7-day delivery. Under-1-minute response systems. We move fast because speed is the entire product &mdash; a slow system is a system that doesn't exist.
+            </p>
+          </article>
+
+          <article class="card value-card">
+            <span class="value-card__icon" aria-hidden="true">&#128269;</span>
+            <h3 class="value-card__title" data-i18n="about.valuesTransparency">Transparency</h3>
+            <p class="value-card__body">
+              Clear scope, real metrics, no black boxes. You see the dashboard, you see the conversion numbers, and you see exactly what you're paying for.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         OUR APPROACH (4 steps)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="approach-section" aria-labelledby="approach-title" data-animate>
+      <div class="container">
+        <header class="section-head">
+          <span class="section-head__eyebrow badge" data-i18n="about.approachEyebrow">How we work</span>
+          <h2 id="approach-title" class="section-head__title" data-i18n="about.approachTitle">Our Approach</h2>
+          <p class="section-head__lede" data-i18n="about.approachLede">One repeatable loop. Every engagement runs the same four phases &mdash; so you always know what's next.</p>
+        </header>
+
+        <div class="approach">
+          <article class="approach-step">
+            <span class="approach-step__num" aria-hidden="true">1</span>
+            <h3 class="approach-step__title" data-i18n="about.approachDiagnose">Diagnose</h3>
+            <p class="approach-step__body">
+              We map your lead flow, channels, and follow-up. The audit identifies exactly where revenue is leaking before we write a single line of automation.
+            </p>
+          </article>
+
+          <article class="approach-step">
+            <span class="approach-step__num" aria-hidden="true">2</span>
+            <h3 class="approach-step__title" data-i18n="about.approachBuild">Build</h3>
+            <p class="approach-step__body">
+              We install the system in 7 days &mdash; bots, CRM, landing pages, follow-up sequences &mdash; configured for your offer and your team.
+            </p>
+          </article>
+
+          <article class="approach-step">
+            <span class="approach-step__num" aria-hidden="true">3</span>
+            <h3 class="approach-step__title" data-i18n="about.approachLaunch">Launch</h3>
+            <p class="approach-step__body">
+              We go live with a 15-minute team training. From day one, every new lead gets an answer in under a minute &mdash; across every channel.
+            </p>
+          </article>
+
+          <article class="approach-step">
+            <span class="approach-step__num" aria-hidden="true">4</span>
+            <h3 class="approach-step__title" data-i18n="about.approachOptimize">Optimize</h3>
+            <p class="approach-step__body">
+              We review real metrics monthly &mdash; response time, conversion rate, revenue per channel &mdash; and tune the system so it compounds over time.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════════════════ -->
+    <section class="cta-final" aria-labelledby="final-cta-title" data-animate>
+      <div class="container">
+        <h2 id="final-cta-title" class="cta-final__title" data-i18n="about.finalTitle">Let's talk about your business.</h2>
+        <p class="cta-final__sub" data-i18n="about.finalLede">Tell us where the leads are slipping through. We'll show you what the fix looks like &mdash; in 15 minutes, no obligation.</p>
+        <a href="/contact" class="btn-primary" data-i18n="final.cta">Get Your Free Diagnosis &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER (partial: partials/footer.html)
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="/services/ai-automation" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="/services/web-development" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="/services/ecommerce" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="/services" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="/industries/dental-aesthetics" data-i18n="footer.dentalAesthetics">Dental Aesthetics</a></li>
+            <li><a href="/industries/law-firms" data-i18n="footer.lawFirms">Law Firms</a></li>
+            <li><a href="/industries/medical-clinics" data-i18n="footer.medicalClinics">Medical Clinics</a></li>
+            <li><a href="/industries/architecture" data-i18n="footer.architecture">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="/about" data-i18n="nav.about">About</a></li>
+            <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries — Revenue Infrastructure for High-Value Services</title>
+  <meta name="description" content="Built for high-value service businesses: dental aesthetics, law firms, medical clinics, and architecture. Integrated revenue systems that capture, qualify, and convert every lead.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="../index.html" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+          <li><a href="index.html" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+        <li><a href="index.html" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="gradient-hero" data-animate>
+      <div class="container" style="text-align: center; padding-top: 64px; padding-bottom: 64px;">
+        <span class="badge badge--accent" style="margin-bottom: 24px;">Industries We Serve</span>
+        <h1 style="margin-bottom: 24px;">Built for High-Value<br>Service Businesses</h1>
+        <p style="max-width: 720px; margin: 0 auto 32px; font-size: var(--text-lg); color: var(--color-text-secondary);">
+          We install revenue infrastructure for service businesses where every lead is worth thousands.
+          Four verticals. One integrated system: bot + CRM + website + follow-up — engineered to your specific workflow.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="../contact.html" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          <a href="#verticals" class="btn-secondary">See Your Industry</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ VERTICAL CARDS ═══════════ -->
+    <section id="verticals" class="section-dark" data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">Choose Your Industry</h2>
+          <p style="max-width: 640px; margin: 0 auto;">Each vertical gets a revenue system tuned to how your business actually closes — from the bot menu to the follow-up cadence.</p>
+        </div>
+
+        <div class="grid-4">
+
+          <!-- Dental Aesthetics -->
+          <a href="dental-aesthetics.html" class="card" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: inherit;">
+            <div style="aspect-ratio: 4/3; border-radius: var(--radius-xl); background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(192, 132, 252, 0.18)), var(--color-bg-white-06); border: 1px solid var(--color-border-subtle); display: flex; align-items: center; justify-content: center; font-size: 56px;">
+              <span aria-hidden="true">🦷</span>
+            </div>
+            <h3 class="card__title" data-i18n="industries.dentalTitle">Dental Aesthetics</h3>
+            <p class="card__body">Stop losing high-ticket aesthetic cases to slow replies. Capture every whitening, veneer, and implant inquiry — 24/7.</p>
+            <span style="color: var(--color-accent-pink-300); font-weight: var(--font-semibold); font-size: var(--text-base); margin-top: auto;">
+              See the system →
+            </span>
+          </a>
+
+          <!-- Law Firms -->
+          <a href="law-firms.html" class="card" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: inherit;">
+            <div style="aspect-ratio: 4/3; border-radius: var(--radius-xl); background: linear-gradient(135deg, rgba(192, 132, 252, 0.18), rgba(244, 114, 182, 0.18)), var(--color-bg-white-06); border: 1px solid var(--color-border-subtle); display: flex; align-items: center; justify-content: center; font-size: 56px;">
+              <span aria-hidden="true">⚖️</span>
+            </div>
+            <h3 class="card__title" data-i18n="industries.lawTitle">Law Firms</h3>
+            <p class="card__body">Qualify cases before the first call. Route high-value matters to the right partner and stop wasting hours on cold leads.</p>
+            <span style="color: var(--color-accent-pink-300); font-weight: var(--font-semibold); font-size: var(--text-base); margin-top: auto;">
+              See the system →
+            </span>
+          </a>
+
+          <!-- Medical Clinics -->
+          <a href="medical-clinics.html" class="card" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: inherit;">
+            <div style="aspect-ratio: 4/3; border-radius: var(--radius-xl); background: linear-gradient(135deg, rgba(244, 114, 182, 0.18), rgba(249, 168, 212, 0.12)), var(--color-bg-white-06); border: 1px solid var(--color-border-subtle); display: flex; align-items: center; justify-content: center; font-size: 56px;">
+              <span aria-hidden="true">🏥</span>
+            </div>
+            <h3 class="card__title" data-i18n="industries.medicalTitle">Medical Clinics</h3>
+            <p class="card__body">Keep your schedule full — automatically. Smart reminders, confirmations, and pre-consult triage that reduce no-shows by up to 40%.</p>
+            <span style="color: var(--color-accent-pink-300); font-weight: var(--font-semibold); font-size: var(--text-base); margin-top: auto;">
+              See the system →
+            </span>
+          </a>
+
+          <!-- Architecture -->
+          <a href="architecture.html" class="card" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: inherit;">
+            <div style="aspect-ratio: 4/3; border-radius: var(--radius-xl); background: linear-gradient(135deg, rgba(192, 132, 252, 0.18), rgba(156, 163, 175, 0.12)), var(--color-bg-white-06); border: 1px solid var(--color-border-subtle); display: flex; align-items: center; justify-content: center; font-size: 56px;">
+              <span aria-hidden="true">🏗️</span>
+            </div>
+            <h3 class="card__title">Architecture Firms</h3>
+            <p class="card__body">Filter high-value leads before the proposal. Project type, budget, and timeline — qualified automatically, routed to the right partner.</p>
+            <span style="color: var(--color-accent-pink-300); font-weight: var(--font-semibold); font-size: var(--text-base); margin-top: auto;">
+              See the system →
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ WHY VERTICALS MATTER ═══════════ -->
+    <section data-animate>
+      <div class="container">
+        <div class="grid-2" style="align-items: center; gap: 64px;">
+          <div>
+            <span class="badge" style="margin-bottom: 16px;">Why Vertical-Specific</span>
+            <h2 style="margin-bottom: 24px;">Generic systems leak revenue. Tuned systems capture it.</h2>
+            <p style="margin-bottom: 24px;">
+              A dental clinic, a law firm, and an architecture studio have nothing in common — except one thing:
+              every missed call costs them thousands. We don't sell a generic chatbot. We install a system built around
+              the questions your prospects actually ask, the objections they raise, and the moments they decide to book.
+            </p>
+            <ul style="display: flex; flex-direction: column; gap: 12px;">
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">Bot menus written in your industry's language — not a template</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">CRM pipeline mirroring how your team actually closes</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">Compliance baked in (CFO, OAB, LGPD) — not bolted on</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">Metrics that map to your P&L — not vanity numbers</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card" style="padding: 32px; background: var(--color-bg-secondary);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+              <div style="text-align: left;">
+                <p style="font-size: var(--text-3xl); font-weight: var(--font-semibold); color: var(--color-accent-pink-300); letter-spacing: var(--tracking-snug); line-height: var(--leading-tight); margin-bottom: 4px;">78%</p>
+                <small>of dental leads choose the clinic that responds first</small>
+              </div>
+              <div style="text-align: left;">
+                <p style="font-size: var(--text-3xl); font-weight: var(--font-semibold); color: var(--color-accent-pink-300); letter-spacing: var(--tracking-snug); line-height: var(--leading-tight); margin-bottom: 4px;">3×</p>
+                <small>more consultations when intake happens in &lt; 5 min</small>
+              </div>
+              <div style="text-align: left;">
+                <p style="font-size: var(--text-3xl); font-weight: var(--font-semibold); color: var(--color-accent-pink-300); letter-spacing: var(--tracking-snug); line-height: var(--leading-tight); margin-bottom: 4px;">40%</p>
+                <small>fewer no-shows with smart reminders</small>
+              </div>
+              <div style="text-align: left;">
+                <p style="font-size: var(--text-3xl); font-weight: var(--font-semibold); color: var(--color-accent-pink-300); letter-spacing: var(--tracking-snug); line-height: var(--leading-tight); margin-bottom: 4px;">24/7</p>
+                <small>lead capture — even when your team is off</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ THE SYSTEM (SHARED) ═══════════ -->
+    <section class="section-dark" data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">One Integrated Revenue System</h2>
+          <p style="max-width: 640px; margin: 0 auto;">Every industry gets the same four-layer stack — tuned to your vertical.</p>
+        </div>
+
+        <div style="display: flex; gap: 16px; align-items: stretch; flex-wrap: wrap; justify-content: center;">
+
+          <div class="card" style="flex: 1 1 220px; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">💬</div>
+            <h4 class="card__title">Capture</h4>
+            <p class="card__body">WhatsApp + web bot with a menu built around your procedures, case types, or services.</p>
+          </div>
+
+          <div style="display: flex; align-items: center; color: var(--color-text-muted); font-size: 28px;" aria-hidden="true">→</div>
+
+          <div class="card" style="flex: 1 1 220px; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">📊</div>
+            <h4 class="card__title">Qualify</h4>
+            <p class="card__body">CRM pipeline that scores every lead on fit, urgency, and budget — before your team touches it.</p>
+          </div>
+
+          <div style="display: flex; align-items: center; color: var(--color-text-muted); font-size: 28px;" aria-hidden="true">→</div>
+
+          <div class="card" style="flex: 1 1 220px; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">🔄</div>
+            <h4 class="card__title">Convert</h4>
+            <p class="card__body">Automated follow-up, scheduling, and confirmations that close while you sleep.</p>
+          </div>
+
+          <div style="display: flex; align-items: center; color: var(--color-text-muted); font-size: 28px;" aria-hidden="true">→</div>
+
+          <div class="card" style="flex: 1 1 220px; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">📈</div>
+            <h4 class="card__title">Measure</h4>
+            <p class="card__body">Revenue dashboard — response time, booking rate, source ROI, and lost-lead recovery.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FINAL CTA ═══════════ -->
+    <section data-animate>
+      <div class="container" style="text-align: center;">
+        <span class="badge badge--accent" style="margin-bottom: 24px;">Free Diagnosis</span>
+        <h2 style="margin-bottom: 20px;">Find out what your slow replies<br>are actually costing you.</h2>
+        <p style="max-width: 640px; margin: 0 auto 32px;">
+          In 30 minutes, we map your current lead flow, show you exactly where leads leak,
+          and quote what it would take to plug the holes. No commitment.
+        </p>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="../services/ai-automation.html" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="../services/web-development.html" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="../services/ecommerce.html" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="../services/index.html" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="dental-aesthetics.html">Dental Aesthetics</a></li>
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-clinics.html">Medical Clinics</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/language.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+node_modules/
+.git/
+.bun/
+dist/
+build/
+*.log
+.ai/workflow/completed/

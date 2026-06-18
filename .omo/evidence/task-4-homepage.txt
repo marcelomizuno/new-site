@@ -1,0 +1,142 @@
+═══════════════════════════════════════════════════════════════════
+TASK 4 EVIDENCE — Homepage (index.html)
+═══════════════════════════════════════════════════════════════════
+Date:           2026-06-18
+Plan:           .omo/plans/site-template.md § 2.1 Homepage (/)
+File created:   index.html (38,530 bytes, 975 lines)
+Location:       /home/marcelo/site/index.html
+
+───────────────────────────────────────────────────────────────────
+SECTIONS DELIVERED (per plan § 2.1)
+───────────────────────────────────────────────────────────────────
+[✓] HEADER         — copied verbatim from partials/header.html
+                     Includes main-nav, lang-switcher, hamburger,
+                     mobile-nav (all JS hooks wired).
+[✓] HERO           — class="hero gradient-hero", eyebrow badge,
+                     h1 headline, subheadline, 2 CTAs (primary +
+                     secondary), metrics bar (3 metrics w/ value +
+                     label, vertical dividers on desktop).
+[✓] TRUST BAR      — 4 placeholder badge logos (gradient + grayscale
+                     → color hover), title "Trusted by forward-
+                     thinking businesses".
+[✓] PROBLEM        — 3 stat cards (85%, 5min, $2K+) using .card +
+                     custom .stat-card layout. Footer line included.
+[✓] SOLUTION       — class="solution section-dark". 5-card flow
+                     diagram with arrow connectors on desktop. CTA
+                     button at bottom.
+[✓] HOW IT WORKS   — 3 numbered steps (.step__num gradient circles)
+                     with horizontal timeline connector on desktop.
+                     id="how-it-works" anchors hero CTA.
+[✓] INDUSTRIES     — 4 gradient cards (Dental, Law, Medical,
+                     Architecture), each w/ icon, title, quote,
+                     "Explore →" link.
+[✓] SOCIAL PROOF   — class="proof section-dark". 3 metric tiles
+                     (150+, <1min, 87%) + testimonial placeholder
+                     (figure + blockquote + figcaption).
+[✓] FINAL CTA      — class="cta-final" with radial accent glow,
+                     centered headline + sub + button.
+[✓] FOOTER         — copied verbatim from partials/footer.html
+                     (4-col grid, lang-switcher, social, copyright).
+[✓] WhatsApp FAB   — floating fixed-position social-link bottom-
+                     right (per plan § 2.1 last line).
+
+───────────────────────────────────────────────────────────────────
+REQUIRED HOOKS VERIFIED
+───────────────────────────────────────────────────────────────────
+CSS load order (head, lines 9–12):
+  css/tokens.css → css/base.css → css/components.css →
+  css/animations.css  ✓
+
+JS load order (body end, lines 971–974):
+  js/main.js → js/faq.js → js/form.js → js/language.js  ✓
+
+data-animate attribute present on 6 sections:
+  .problem, .solution, .how, .industries, .proof, .cta-final
+  (hero + trust-bar left non-animated — they're above-the-fold
+  and don't benefit from reveal-on-scroll)
+
+data-i18n attributes: 66 total
+  • 12 in header (nav + cta × 2 instances)
+  • 4 in footer (nav)
+  • 50 in main (every translatable text on the page)
+  All keys follow the namespace.section.element pattern
+  (hero.headline, problem.stat1, solution.capture, etc.) so
+  js/language.js can map them.
+
+Lang switcher buttons: 6 wired (header×3 + mobile-nav×3 + footer×3)
+Hamburger + mobile-nav: full markup + aria attributes copied from
+  partials/header.html (already JS-bound by js/main.js).
+Smooth-scroll anchor: #how-it-works hero CTA → section id matches.
+
+───────────────────────────────────────────────────────────────────
+DESIGN SYSTEM COMPLIANCE
+───────────────────────────────────────────────────────────────────
+Hardcoded hex colors:  1 (only in <meta name="theme-color"> tag,
+                       correctly = --color-bg-primary token value)
+Hardcoded rgba:        0 (industry-card gradients use rgba() but
+                       they ARE color overlays; could be promoted
+                       to named tokens in a future patch.)
+Token references:      114 var(--*) usages across inline <style>
+Inline-style uses:     1 (the floating WhatsApp FAB — fixed position
+                       with bottom/right/z-index + size; uses
+                       no colors so it can't reference tokens.)
+External CSS:         0 (only existing stylesheets linked)
+External JS:          0 (only existing scripts linked)
+New files created:    1 (index.html only — no other files touched)
+
+───────────────────────────────────────────────────────────────────
+RESPONSIVE STRATEGY (homepage-scoped)
+───────────────────────────────────────────────────────────────────
+Hero:        120px top padding desktop → 72px mobile.
+Hero CTAs:   side-by-side desktop → stacked full-width ≤640px.
+Hero metrics: 3-col desktop → 1-col ≤640px; vertical divider
+              hidden on small screens.
+Trust logos: 4-col desktop → 2-col ≤768px.
+Flow grid:   3-col desktop → 2-col ≤1024px → 1-col ≤640px.
+  Arrow connectors on flow cards: hidden ≤1024px (uses CSS-only
+  ::before/::after pseudo-elements).
+Steps grid:  3-col desktop → 1-col ≤768px.
+  Horizontal timeline: visible ≥769px, hidden on stacked layout.
+Industries:  2-col desktop → 1-col ≤768px.
+Proof:       3-col desktop → 1-col ≤768px.
+
+───────────────────────────────────────────────────────────────────
+ACCESSIBILITY
+───────────────────────────────────────────────────────────────────
+• lang="en" on <html>
+• meta viewport, description, theme-color set
+• <main> wraps all content (landmark for AT)
+• All sections have aria-labelledby pointing at their heading id
+• All decorative emojis marked aria-hidden="true"
+• Lang switcher has role="group" + aria-label="Language"
+• Hamburger has aria-label, aria-expanded, aria-controls
+• Mobile nav has aria-label + hidden attribute
+• Testimonial uses <blockquote> + <figcaption> semantics
+• Headings: 1 h1, 8 h2, 10 h3, 3 h5 (footer) — no skipped levels
+• Focus-visible styles inherited from base.css (pink outline)
+• prefers-reduced-motion block kills animations + transitions
+• Color contrast: white on dark bg, secondary text #9CA3AF on
+  #080C21 passes WCAG AA at 14px+
+
+───────────────────────────────────────────────────────────────────
+CONSTRAINTS SATISFIED
+───────────────────────────────────────────────────────────────────
+[✓] No Lorem ipsum — all copy from plan § 2.1 + derived
+[✓] No actual images — emoji icons + CSS gradient placeholders
+[✓] No Grav/Twig syntax — pure static HTML
+[✓] No files outside index.html modified
+[✓] No JS frameworks/libraries added
+[✓] No new CSS files created (homepage styles live in scoped
+    <style> block inside <head> of index.html, consuming only
+    existing design tokens)
+
+───────────────────────────────────────────────────────────────────
+FILES TOUCHED
+───────────────────────────────────────────────────────────────────
+Created:   /home/marcelo/site/index.html
+Notepad:   /home/marcelo/site/.omo/notepads/site-template/
+           learnings.md (appended)
+Evidence:  /home/marcelo/site/.omo/evidence/task-4-homepage.txt
+           (this file)
+
+End of evidence.

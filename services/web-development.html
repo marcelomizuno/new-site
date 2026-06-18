@@ -1,0 +1,552 @@
+<!--
+  Web Development Service (/services/web-development)
+  Hero + Portfolio Grid + What's Included + Delivery Process + CTA
+  Depends on: ../css/tokens.css + ../css/base.css + ../css/components.css + ../css/animations.css
+  JS:        ../js/main.js + ../js/language.js
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development — Websites That Convert Clicks Into Revenue</title>
+  <meta name="description" content="Fast, beautiful, mobile-first websites designed to turn visitors into customers. Conversion-focused copy, SEO basics, and analytics baked in.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* ── Page-scoped styles for /services/web-development ── */
+
+    .section-header {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    .section-header__eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--color-accent-pink-300);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .section-header__title {
+      margin-bottom: 16px;
+    }
+    .section-header__lede {
+      font-size: var(--text-md);
+      line-height: var(--leading-normal);
+    }
+
+    .page-hero {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      text-align: center;
+    }
+    .page-hero__eyebrow {
+      display: inline-flex;
+      margin-bottom: 20px;
+    }
+    .page-hero__title {
+      max-width: 880px;
+      margin: 0 auto 20px;
+    }
+    .page-hero__lede {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      font-size: var(--text-md);
+      line-height: var(--leading-normal);
+    }
+    .page-hero__actions {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    /* ── Portfolio grid ── */
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--grid-gap);
+    }
+    .portfolio__item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .portfolio__item:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-border-light);
+      box-shadow: var(--shadow-lg);
+    }
+    .portfolio__shot {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio__shot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 50%);
+    }
+    .portfolio__shot--clinic {
+      background: linear-gradient(135deg, #EC4899, #C084FC);
+    }
+    .portfolio__shot--law {
+      background: linear-gradient(135deg, #1B1240, #312E81);
+    }
+    .portfolio__shot--architect {
+      background: linear-gradient(135deg, #F472B6, #FCD34D);
+    }
+    .portfolio__shot-label {
+      position: relative;
+      z-index: 1;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(8, 12, 33, 0.6);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      color: var(--color-text-primary);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-normal);
+    }
+    .portfolio__meta {
+      padding: 0 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .portfolio__title {
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+    }
+    .portfolio__caption {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+    .portfolio__metric {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--color-accent-pink-300);
+    }
+
+    /* ── Checklist ── */
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 32px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .checklist__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: var(--text-md);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+    .checklist__item::before {
+      content: '\2713';
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent-pink-500);
+      color: var(--color-text-primary);
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      line-height: 1;
+    }
+
+    /* ── Process bar (horizontal timeline) ── */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+      counter-reset: step;
+    }
+    .process__step {
+      position: relative;
+      counter-increment: step;
+      padding: 24px 16px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .process__step:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-border-light);
+    }
+    .process__step::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-normal);
+      color: var(--color-accent-pink-400);
+    }
+    .process__step-name {
+      font-size: var(--text-md);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+    }
+    .process__step-body {
+      font-size: var(--text-base-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    .process__timeline {
+      max-width: 720px;
+      margin: 32px auto 0;
+      padding: 16px 24px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-accent-glow);
+      border: 1px solid var(--color-accent-pink-500);
+      text-align: center;
+      font-size: var(--text-base);
+      color: var(--color-text-primary);
+    }
+    .process__timeline strong {
+      color: var(--color-accent-pink-300);
+      font-weight: var(--font-semibold);
+    }
+
+    @media (max-width: 1024px) {
+      .portfolio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .process {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero {
+        padding-top: 96px;
+        padding-bottom: 56px;
+      }
+      .portfolio {
+        grid-template-columns: 1fr;
+      }
+      .process {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .checklist {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="/" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="/services" data-i18n="nav.services">Services</a></li>
+          <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="/about" data-i18n="nav.about">About</a></li>
+          <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="/services" data-i18n="nav.services">Services</a></li>
+        <li><a href="/industries" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="/about" data-i18n="nav.about">About</a></li>
+        <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="/contact" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="gradient-hero page-hero" aria-labelledby="web-hero-title" data-animate>
+      <div class="container">
+        <span class="badge page-hero__eyebrow" data-i18n="services.webBadge">Web Development</span>
+        <h1 id="web-hero-title" class="page-hero__title">Websites That Convert Clicks Into Revenue</h1>
+        <p class="page-hero__lede">
+          Fast, beautiful, mobile-first websites designed to turn visitors into customers &mdash; not portfolio pieces.
+        </p>
+        <div class="page-hero__actions">
+          <a href="/contact" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          <a href="#portfolio" class="btn-secondary" data-i18n="cta.secondary">See How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PORTFOLIO GRID ============ -->
+    <section id="portfolio" aria-labelledby="portfolio-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow">Results we&rsquo;ve delivered</span>
+          <h2 id="portfolio-title" class="section-header__title">Built to book calls, not win design awards.</h2>
+          <p class="section-header__lede">
+            Three service businesses that needed more than a pretty site &mdash; they needed a revenue engine on a domain.
+          </p>
+        </header>
+
+        <div class="portfolio">
+          <article class="portfolio__item">
+            <div class="portfolio__shot portfolio__shot--clinic" role="img" aria-label="Clinic website preview placeholder">
+              <span class="portfolio__shot-label">dental clinic &middot; S&atilde;o Paulo</span>
+            </div>
+            <div class="portfolio__meta">
+              <h3 class="portfolio__title">Aesthetic Dental Clinic</h3>
+              <p class="portfolio__caption">
+                Single-page site focused on a single high-ticket procedure. Lead form routed straight to WhatsApp with auto-reply.
+              </p>
+              <span class="portfolio__metric">+62% qualified leads in 90 days</span>
+            </div>
+          </article>
+
+          <article class="portfolio__item">
+            <div class="portfolio__shot portfolio__shot--law" role="img" aria-label="Law firm website preview placeholder">
+              <span class="portfolio__shot-label">law firm &middot; Miami</span>
+            </div>
+            <div class="portfolio__meta">
+              <h3 class="portfolio__title">Boutique Law Firm</h3>
+              <p class="portfolio__caption">
+                Multilingual landing page (EN / ES / PT) with practice-area routing and case-intake form. SEO foundation included.
+              </p>
+              <span class="portfolio__metric">3.4x organic traffic in 6 months</span>
+            </div>
+          </article>
+
+          <article class="portfolio__item">
+            <div class="portfolio__shot portfolio__shot--architect" role="img" aria-label="Architecture studio website preview placeholder">
+              <span class="portfolio__shot-label">architecture studio &middot; Lisbon</span>
+            </div>
+            <div class="portfolio__meta">
+              <h3 class="portfolio__title">Architecture Studio</h3>
+              <p class="portfolio__caption">
+                Visual-led portfolio with project filtering, lightweight CMS, and an inquiry flow tuned for high-ticket residential clients.
+              </p>
+              <span class="portfolio__metric">Brief-to-call conversion up 41%</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT'S INCLUDED ============ -->
+    <section class="section-dark" aria-labelledby="web-included-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow" data-i18n="services.webIncludedEyebrow">What you get</span>
+          <h2 id="web-included-title" class="section-header__title">Every site ships with the basics done right.</h2>
+          <p class="section-header__lede">
+            No &ldquo;coming soon&rdquo; placeholders for things every business needs from day one. It&rsquo;s in the build, not the upsell.
+          </p>
+        </header>
+
+        <ul class="checklist" aria-label="What is included">
+          <li class="checklist__item">Responsive design (mobile-first)</li>
+          <li class="checklist__item">Conversion-focused copywriting</li>
+          <li class="checklist__item">WhatsApp / contact integration</li>
+          <li class="checklist__item">SEO basics (titles, meta, speed)</li>
+          <li class="checklist__item">Google Analytics setup</li>
+          <li class="checklist__item">1 revision round</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ DELIVERY PROCESS ============ -->
+    <section aria-labelledby="process-title" data-animate>
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__eyebrow">Delivery process</span>
+          <h2 id="process-title" class="section-header__title">From briefing to launch in 7&ndash;14 days.</h2>
+          <p class="section-header__lede">
+            A predictable six-step process. You approve at every gate &mdash; no surprises on launch day.
+          </p>
+        </header>
+
+        <ol class="process" aria-label="Delivery process steps">
+          <li class="process__step">
+            <span class="process__step-name">Briefing</span>
+            <span class="process__step-body">Goals, offer, audience, brand references &mdash; captured in a 60-minute session.</span>
+          </li>
+          <li class="process__step">
+            <span class="process__step-name">Wireframe</span>
+            <span class="process__step-body">Page structure and copy flow approved before any design work begins.</span>
+          </li>
+          <li class="process__step">
+            <span class="process__step-name">Design &amp; Dev</span>
+            <span class="process__step-body">Visual design and front-end build, mobile-first, on your real domain.</span>
+          </li>
+          <li class="process__step">
+            <span class="process__step-name">QA</span>
+            <span class="process__step-body">Speed, accessibility, responsive checks, and form/CRM wiring verified.</span>
+          </li>
+          <li class="process__step">
+            <span class="process__step-name">Review</span>
+            <span class="process__step-body">You walk the build, request changes, sign off. One revision round included.</span>
+          </li>
+          <li class="process__step">
+            <span class="process__step-name">Launch</span>
+            <span class="process__step-body">DNS cutover, analytics live, sitemap submitted. You&rsquo;re open for business.</span>
+          </li>
+        </ol>
+
+        <p class="process__timeline">
+          Typical timeline: <strong>7&ndash;14 business days</strong> from kickoff to launch
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="gradient-hero" aria-labelledby="web-final-cta-title" data-animate>
+      <div class="container" style="text-align: center;">
+        <h2 id="web-final-cta-title">Get Your Revenue-Ready Website</h2>
+        <p style="max-width: 560px; margin: 20px auto 32px;">
+          Pricing is custom &mdash; it depends on scope, pages, and integrations. Get a free diagnosis and we&rsquo;ll recommend the right build &mdash; with a fixed timeline and fixed cost.
+        </p>
+        <a href="/contact" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="/services/ai-automation" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="/services/web-development" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="/services/ecommerce" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="/services" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="/industries/dental-aesthetics" data-i18n="footer.dentalAesthetics">Dental Aesthetics</a></li>
+            <li><a href="/industries/law-firms" data-i18n="footer.lawFirms">Law Firms</a></li>
+            <li><a href="/industries/medical-clinics" data-i18n="footer.medicalClinics">Medical Clinics</a></li>
+            <li><a href="/industries/architecture" data-i18n="footer.architecture">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="/about" data-i18n="nav.about">About</a></li>
+            <li><a href="/pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="/blog" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/language.js"></script>
+</body>
+</html>

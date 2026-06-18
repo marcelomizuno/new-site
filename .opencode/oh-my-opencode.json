@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "sisyphus": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5-pro"
+    },
+    "hephaestus": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5-pro",
+      "allow_non_gpt_model": true
+    },
+    "oracle": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5"
+    },
+    "librarian": {
+      "model": "google/gemma-4-31b-it"
+    },
+    "explore": {
+      "model": "openrouter/nex-agi/nex-n2-pro:free"
+    },
+    "multimodal-looker": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5"
+    },
+    "prometheus": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5-pro"
+    },
+    "metis": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5"
+    },
+    "momus": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5"
+    },
+    "atlas": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5"
+    },
+    "sisyphus-junior": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5"
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "openrouter/minimax/minimax-m3"
+    },
+    "ultrabrain": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5-pro"
+    },
+    "artistry": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5-pro"
+    },
+    "quick": {
+      "model": "openrouter/nex-agi/nex-n2-pro:free"
+    },
+    "unspecified-low": {
+      "model": "xiaomi-token-plan-sgp/mimo-v2.5"
+    },
+    "unspecified-high": {
+      "model": "openrouter/minimax/minimax-m3",
+      "reasoningEffort": "max"
+    },
+    "writing": {
+      "model": "google/gemma-4-31b-it"
+    }
+  }
+}

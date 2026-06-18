@@ -1,0 +1,819 @@
+<!--
+  Blog Post Template (/blog/post-template.html)
+  Single-post layout. Duplicate this file for each new post and edit the
+  metadata, content, and related-post list. Acts as the post-page blueprint.
+  Depends on: ../css/tokens.css + ../css/base.css + ../css/components.css + ../css/animations.css
+  JS:        ../js/main.js (smooth scroll, hamburger, animate-on-scroll)
+             ../js/language.js (data-i18n)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 5-Minute Reply: Why speed-to-lead is the only metric that matters in 2026 — Brand Blog</title>
+  <meta name="description" content="After auditing 47 service businesses across Brazil, the U.S., and Spain, one variable explained 78% of the variance in close rate: how fast the first reply lands.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* Page-scoped styles for the blog post template only. */
+    .post-hero {
+      padding-top: 120px;
+      padding-bottom: 56px;
+      text-align: center;
+    }
+
+    .post-hero__eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .post-hero__title {
+      max-width: 820px;
+      margin: 0 auto 24px;
+    }
+
+    .post-hero__meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--color-text-muted);
+      font-size: var(--text-base);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .post-hero__meta-divider {
+      width: 4px;
+      height: 4px;
+      border-radius: var(--radius-pill);
+      background: var(--color-text-muted);
+    }
+
+    .post-hero__author {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .post-hero__avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--color-accent-pink-500), var(--color-accent-purple-400));
+      color: var(--color-text-primary);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+    }
+
+    /* Featured image */
+    .post-featured {
+      padding-top: 24px;
+      padding-bottom: 56px;
+    }
+
+    .post-featured__media {
+      position: relative;
+      aspect-ratio: 21 / 9;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.22), rgba(192, 132, 252, 0.14));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .post-featured__glyph {
+      font-size: 96px;
+      line-height: 1;
+      filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.35));
+    }
+
+    /* Two-column layout: article + sticky sidebar (TOC / share) */
+    .post-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 720px) 240px;
+      gap: 64px;
+      align-items: start;
+      justify-content: center;
+    }
+
+    /* Article body — long-form typography */
+    .article {
+      max-width: 720px;
+    }
+
+    .article__body {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      font-size: var(--text-md);
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+    }
+
+    .article__body p:first-of-type::first-letter {
+      font-size: 3.5em;
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      float: left;
+      line-height: 1;
+      padding-right: 12px;
+      padding-top: 4px;
+    }
+
+    .article__body h2 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-snug);
+      line-height: var(--leading-snug);
+      color: var(--color-text-primary);
+      margin-top: 24px;
+    }
+
+    .article__body h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-snug);
+      color: var(--color-text-primary);
+      margin-top: 16px;
+    }
+
+    .article__body a {
+      color: var(--color-accent-pink-400);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .article__body a:hover,
+    .article__body a:focus-visible {
+      color: var(--color-accent-pink-300);
+    }
+
+    .article__body ul,
+    .article__body ol {
+      padding-left: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .article__body ul li {
+      list-style: disc;
+    }
+
+    .article__body ol li {
+      list-style: decimal;
+    }
+
+    .article__body blockquote {
+      border-left: 3px solid var(--color-accent-pink-500);
+      padding: 8px 0 8px 24px;
+      margin: 8px 0;
+      color: var(--color-text-primary);
+      font-size: var(--text-lg);
+      font-style: italic;
+    }
+
+    /* Pull quote variant */
+    .article__body blockquote cite {
+      display: block;
+      margin-top: 12px;
+      font-style: normal;
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+    }
+
+    /* Inline code */
+    .article__body code {
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      background: var(--color-bg-white-06);
+      color: var(--color-accent-pink-300);
+    }
+
+    /* Stats callout inside article */
+    .stat-callout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 24px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      margin: 16px 0;
+    }
+
+    .stat-callout__item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-callout__value {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-snug);
+      color: var(--color-accent-pink-300);
+      line-height: var(--leading-tight);
+    }
+
+    .stat-callout__label {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    /* Sidebar (share + author card) */
+    .post-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: calc(var(--header-height) + 24px);
+    }
+
+    .share-card {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-2xl);
+      padding: 20px;
+    }
+
+    .share-card__title {
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .share-card__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .share-card__link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-white-06);
+      border: 1px solid var(--color-border-subtle);
+      color: var(--color-text-secondary);
+      font-size: var(--text-base);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .share-card__link:hover,
+    .share-card__link:focus-visible {
+      background: var(--color-accent-pink-500);
+      border-color: var(--color-accent-pink-500);
+      color: var(--color-text-primary);
+    }
+
+    /* Author bio card at end of article */
+    .author-bio {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      border-radius: var(--radius-2xl);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      margin-top: 24px;
+    }
+
+    .author-bio__avatar {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--color-accent-pink-500), var(--color-accent-purple-400));
+      color: var(--color-text-primary);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+    }
+
+    .author-bio__name {
+      font-size: var(--text-md);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+    }
+
+    .author-bio__role {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .author-bio__copy {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* Related posts */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--grid-gap);
+    }
+
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .related-card__media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .related-card__media--1 {
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.20), rgba(99, 102, 241, 0.14));
+    }
+    .related-card__media--2 {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.20), rgba(192, 132, 252, 0.12));
+    }
+    .related-card__media--3 {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(99, 102, 241, 0.14));
+    }
+
+    .related-card__media-glyph {
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    .related-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px;
+    }
+
+    .related-card__meta {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .related-card__title {
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-normal);
+      line-height: var(--leading-snug);
+      color: var(--color-text-primary);
+    }
+
+    .related-card__title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .related-card__title a:hover,
+    .related-card__title a:focus-visible {
+      color: var(--color-accent-pink-400);
+    }
+
+    /* Section heading */
+    .post-section-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 48px;
+    }
+
+    .post-section-head__eyebrow {
+      display: inline-flex;
+      margin-bottom: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .post-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .post-sidebar {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .share-card {
+        flex: 1 1 240px;
+      }
+
+      .related-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .post-hero {
+        padding-top: 96px;
+        padding-bottom: 40px;
+      }
+
+      .post-featured {
+        padding-top: 16px;
+        padding-bottom: 40px;
+      }
+
+      .post-featured__media {
+        aspect-ratio: 16 / 9;
+      }
+
+      .post-featured__glyph {
+        font-size: 64px;
+      }
+
+      .stat-callout {
+        grid-template-columns: 1fr;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .author-bio {
+        flex-direction: column;
+      }
+
+      .article__body p:first-of-type::first-letter {
+        font-size: 2.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="../index.html" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+          <li><a href="../industries/index.html" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="index.html" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+        <li><a href="../industries/index.html" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="index.html" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ POST HERO ============ -->
+    <section class="gradient-hero post-hero" aria-labelledby="post-title" data-animate>
+      <div class="container">
+        <div class="post-hero__eyebrow">
+          <a href="index.html" class="badge">Blog</a>
+          <span class="badge badge--accent">Response Time</span>
+        </div>
+        <h1 id="post-title" class="post-hero__title">The 5-Minute Reply: Why speed-to-lead is the only metric that matters in 2026</h1>
+        <div class="post-hero__meta">
+          <span class="post-hero__author">
+            <span class="post-hero__avatar" aria-hidden="true">MR</span>
+            <span>Marcelo Reis</span>
+          </span>
+          <span class="post-hero__meta-divider" aria-hidden="true"></span>
+          <time datetime="2026-05-28">May 28, 2026</time>
+          <span class="post-hero__meta-divider" aria-hidden="true"></span>
+          <span>9 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED IMAGE ============ -->
+    <section class="post-featured" aria-label="Featured image" data-animate>
+      <div class="container">
+        <div class="post-featured__media">
+          <span class="post-featured__glyph" aria-hidden="true">&#9889;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARTICLE + SIDEBAR ============ -->
+    <section aria-label="Article body" data-animate>
+      <div class="container">
+        <div class="post-layout">
+          <!-- Article column -->
+          <article class="article">
+            <div class="article__body">
+              <p>
+                In the last twelve months, our team has audited 47 service businesses across Brazil, the U.S., and Spain &mdash; dental clinics, law firms, architecture studios, aesthetic medicine practices, and a handful of specialty retailers. We pulled CRMs, ad accounts, WhatsApp Business inboxes, and calendar data for each. We were looking for the variable that explained close rate.
+              </p>
+
+              <p>
+                It wasn&rsquo;t ad spend. It wasn&rsquo;t the price point. It wasn&rsquo;t the website&rsquo;s conversion rate. After controlling for everything else, one metric explained 78% of the variance in close rate: <strong>how fast the first reply landed after the lead came in.</strong>
+              </p>
+
+              <h2>The 5-minute cliff</h2>
+
+              <p>
+                The drop-off is not linear. It is a cliff. A lead who gets a context-aware reply inside 5 minutes is roughly <strong>21x more likely</strong> to book than a lead who waits until the next morning. After 30 minutes, you&rsquo;ve already lost two-thirds of the conversion you would have caught. After an hour, you&rsquo;re basically starting the conversation from scratch with someone who&rsquo;s already talked to two of your competitors.
+              </p>
+
+              <div class="stat-callout">
+                <div class="stat-callout__item">
+                  <span class="stat-callout__value">21&times;</span>
+                  <span class="stat-callout__label">Higher booking rate when replied to within 5 min vs next-day</span>
+                </div>
+                <div class="stat-callout__item">
+                  <span class="stat-callout__value">78%</span>
+                  <span class="stat-callout__label">Variance in close rate explained by speed-to-lead alone</span>
+                </div>
+                <div class="stat-callout__item">
+                  <span class="stat-callout__value">67%</span>
+                  <span class="stat-callout__label">Of leads lost if first reply takes &gt; 30 minutes</span>
+                </div>
+              </div>
+
+              <h2>Why humans can&rsquo;t fix this alone</h2>
+
+              <p>
+                The fix sounds simple: &ldquo;just reply faster.&rdquo; It is not simple. The front desk is on the phone. The doctor is in a procedure. The partner is in court. Nobody is sitting by the WhatsApp inbox 24/7, and nobody should be.
+              </p>
+
+              <p>
+                What we install instead is a <strong>three-layer reply system</strong> that runs whether or not a human is awake:
+              </p>
+
+              <ol>
+                <li><strong>An instant acknowledgement bot</strong> that fires inside 60 seconds &mdash; not a generic &ldquo;we&rsquo;ll be right back,&rdquo; but a contextual opener that uses the lead&rsquo;s name, the channel they came in on, and the campaign they responded to.</li>
+                <li><strong>A qualification flow</strong> that runs in the same thread and asks the 3&ndash;4 questions your team needs to score the lead.</li>
+                <li><strong>A human handoff</strong> with a warm intro and a calendar link, only for leads that meet your booking criteria.</li>
+              </ol>
+
+              <blockquote>
+                &ldquo;The receptionist used to triage 30 messages over morning coffee. Now she opens the dashboard at 9am to a list of 14 qualified, calendar-ready leads &mdash; and 22 nurture threads her bot is still warming up.&rdquo;
+                <cite>&mdash; Operations Lead, aesthetic clinic, S&atilde;o Paulo</cite>
+              </blockquote>
+
+              <h2>What &ldquo;fast enough&rdquo; actually looks like</h2>
+
+              <p>
+                Across the 47 audits, the businesses that hit a 30%+ qualified-booking rate all shared three traits:
+              </p>
+
+              <ul>
+                <li>First reply inside 5 minutes, every channel, every day.</li>
+                <li>Booking calendar embedded in the second message, not buried in a follow-up.</li>
+                <li>A human call scheduled within 24 hours of the booking for leads over a defined value threshold.</li>
+              </ul>
+
+              <p>
+                That&rsquo;s it. Three behaviors. The hard part is installing them so they happen consistently &mdash; even when the team is on holiday, sick, or asleep.
+              </p>
+
+              <h3>The cost of getting it wrong</h3>
+
+              <p>
+                Let&rsquo;s put a number on it. A mid-size aesthetic clinic we audited was spending roughly <code>R$ 18,000</code> per month on Meta ads to drive consultations. Average patient lifetime value: <code>R$ 4,200</code>. They were closing 11% of inbound leads, mostly because first replies averaged 6&ndash;8 hours.
+              </p>
+
+              <p>
+                After we installed the three-layer system, close rate moved to 27% on the same ad spend. Same team, same calendar, same prices &mdash; just a system that replied faster and qualified in the same breath.
+              </p>
+
+              <h2>What to install first</h2>
+
+              <p>
+                If you only do one thing this quarter, do this: <strong>measure your real first-reply time across every inbound channel</strong>. Not the CRM timestamp &mdash; the actual time between the lead arriving and the first contextual message leaving. The number will probably shock you. It is almost always 4&ndash;10&times; what the team thinks it is.
+              </p>
+
+              <p>
+                Once you have the baseline, the playbook writes itself. You&rsquo;re not guessing anymore &mdash; you&rsquo;re closing the gap between where you are and the 5-minute cliff.
+              </p>
+            </div>
+
+            <!-- Author bio -->
+            <aside class="author-bio" aria-label="About the author">
+              <span class="author-bio__avatar" aria-hidden="true">MR</span>
+              <div>
+                <div class="author-bio__name">Marcelo Reis</div>
+                <div class="author-bio__role">Founder &amp; Lead Architect, Brand</div>
+                <p class="author-bio__copy">
+                  Marcelo has been building revenue infrastructure for service businesses since 2018. Previously growth at two LATAM SaaS startups, now obsessed with making reply time the default.
+                </p>
+              </div>
+            </aside>
+          </article>
+
+          <!-- Sidebar -->
+          <aside class="post-sidebar" aria-label="Post utilities">
+            <div class="share-card">
+              <h4 class="share-card__title">Share</h4>
+              <div class="share-card__links">
+                <a href="#" class="share-card__link" aria-label="Share on LinkedIn">in</a>
+                <a href="#" class="share-card__link" aria-label="Share on WhatsApp">&#9993;</a>
+                <a href="#" class="share-card__link" aria-label="Share on X / Twitter">X</a>
+                <a href="#" class="share-card__link" aria-label="Copy link">&#128279;</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RELATED POSTS ============ -->
+    <section class="section-dark" aria-labelledby="related-title" data-animate>
+      <div class="container">
+        <header class="post-section-head">
+          <span class="badge post-section-head__eyebrow">Keep reading</span>
+          <h2 id="related-title">Three more from the playbook</h2>
+        </header>
+
+        <div class="related-grid">
+          <article class="card related-card">
+            <div class="related-card__media related-card__media--1">
+              <span class="related-card__media-glyph" aria-hidden="true">&#128172;</span>
+            </div>
+            <div class="related-card__body">
+              <span class="related-card__meta">May 14, 2026 &middot; 6 min</span>
+              <h3 class="related-card__title"><a href="post-template.html">How a dental clinic booked 31% more consultations without spending more on ads</a></h3>
+            </div>
+          </article>
+
+          <article class="card related-card">
+            <div class="related-card__media related-card__media--2">
+              <span class="related-card__media-glyph" aria-hidden="true">&#128190;</span>
+            </div>
+            <div class="related-card__body">
+              <span class="related-card__meta">April 30, 2026 &middot; 11 min</span>
+              <h3 class="related-card__title"><a href="post-template.html">Your CRM is not your problem. Your pipeline is.</a></h3>
+            </div>
+          </article>
+
+          <article class="card related-card">
+            <div class="related-card__media related-card__media--3">
+              <span class="related-card__media-glyph" aria-hidden="true">&#128200;</span>
+            </div>
+            <div class="related-card__body">
+              <span class="related-card__meta">March 22, 2026 &middot; 8 min</span>
+              <h3 class="related-card__title"><a href="post-template.html">The four numbers we report on every Monday (and the six we ignore)</a></h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="gradient-hero" aria-labelledby="post-cta-title" data-animate>
+      <div class="container" style="text-align: center;">
+        <h2 id="post-cta-title">Read enough? Let&rsquo;s install it.</h2>
+        <p style="max-width: 560px; margin: 16px auto 32px;">
+          The 5-minute reply system isn&rsquo;t theory &mdash; it&rsquo;s the default install on every engagement. Book a free diagnosis and we&rsquo;ll show you what your speed-to-lead looks like today.
+        </p>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="../services/ai-automation.html" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="../services/web-development.html" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="../services/ecommerce.html" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="../services/index.html" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="../industries/dental-aesthetics.html" data-i18n="footer.dentalAesthetics">Dental Aesthetics</a></li>
+            <li><a href="../industries/law-firms.html" data-i18n="footer.lawFirms">Law Firms</a></li>
+            <li><a href="../industries/medical-clinics.html" data-i18n="footer.medicalClinics">Medical Clinics</a></li>
+            <li><a href="../industries/architecture.html" data-i18n="footer.architecture">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="index.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/language.js"></script>
+</body>
+</html>

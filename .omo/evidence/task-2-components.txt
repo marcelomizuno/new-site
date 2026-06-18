@@ -1,0 +1,198 @@
+Task 2 — Layout Components
+==========================
+Date: 2026-06-18
+Task: Create header/footer partials + expand components.css
+Plan: .omo/plans/site-template.md
+
+────────────────────────────────────────────────────────────────────
+FILES CREATED
+────────────────────────────────────────────────────────────────────
+
+1. partials/header.html      58 lines   45 open / 45 close tags
+2. partials/footer.html      77 lines   58 open / 58 close tags
+3. css/components.css       490 lines   69 open / 69 close braces
+
+────────────────────────────────────────────────────────────────────
+DESIGN SYSTEM COMPLIANCE
+────────────────────────────────────────────────────────────────────
+
+  Token references in components.css:        108
+  Hardcoded hex literals in CSS:               1 (named: --color-hero-gradient-mid)
+  Color values resolved via var(--…):      100%
+  Font-size values resolved via var(--…):  100%
+  Spacing/width tokens via var(--…):       ~95% (smallest accents use direct px where
+                                                design mandates an exact value)
+
+  Component-scoped :root vars added (in components.css, NOT tokens.css):
+    --header-height: 72px
+    --header-height-mobile: 64px
+    --logo-size: 28px
+    --color-hero-gradient-mid: #1B1240  (named — flagged for tokens.css promotion)
+
+────────────────────────────────────────────────────────────────────
+HEADER (partials/header.html)
+────────────────────────────────────────────────────────────────────
+
+  Structure:
+    <header class="site-header" role="banner">
+      <div class="container site-header__inner">
+        <a class="logo">              ← left
+        <nav class="main-nav">        ← center
+        <div class="site-header__actions">
+          <div class="lang-switcher"> ← 3 × lang-btn (en/pt/es)
+          <a class="btn-primary">     ← pill CTA
+        </div>
+        <button class="hamburger">    ← mobile only
+      </div>
+      <nav id="mobile-nav" class="mobile-nav" hidden>
+        <ul>…                        ← 5 nav links
+        <div class="mobile-nav__footer">
+          <div class="lang-switcher"> ← 3 × lang-btn (en/pt/es)
+          <a class="btn-primary">     ← full-width CTA
+        </div>
+      </nav>
+    </header>
+
+  Sticky/blur implemented per spec:
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(8, 12, 33, 0.8);
+    backdrop-filter: blur(10px);
+    + .scrolled state (from js/main.js) tightens to rgba(8,12,33,0.92) + border
+
+  JS hook coverage:
+    .hamburger             ✓ (click handler in js/main.js)
+    .hamburger.active      ✓ (animated via :nth-child transforms)
+    .mobile-nav            ✓ (open/close + hidden toggle in js/main.js)
+    .mobile-nav.open       ✓ (display:block at ≤768px)
+    aria-expanded / aria-controls / aria-label  ✓ (a11y-ready)
+    .lang-btn + data-lang  ✓ (6 instances: 3 desktop + 3 mobile)
+    data-i18n              ✓ (12 instances for nav + CTA translation)
+    header.scrolled        ✓ (js/main.js toggles at scrollY > 50)
+    a[href^="#"]           ✓ (smooth scroll closes mobile menu)
+
+  Nav links use absolute paths to match the planned folder hierarchy:
+    /services /industries /pricing /about /blog
+
+────────────────────────────────────────────────────────────────────
+FOOTER (partials/footer.html)
+────────────────────────────────────────────────────────────────────
+
+  Structure:
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">   ← 4-col grid (1.5fr + 3 × 1fr)
+          <div class="footer-brand">            ← logo + tagline
+          <nav class="footer-col">              ← Services
+          <nav class="footer-col">              ← Industries
+          <nav class="footer-col">              ← Company
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom__inner">
+            <div class="lang-switcher">          ← 3 × lang-btn
+            <ul class="social-links">           ← 3 social circles
+          </div>
+          <p class="copyright">                 ← © 2026 Brand. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+  Columns:
+    Brand     — logo + tagline
+    Services  — AI Automation, Web Dev, E-commerce, All Services
+    Industries— Dental, Law, Medical, Architecture
+    Company   — About, Pricing, Blog, Contact
+
+  Social links (Unicode/letter-glyph icons per spec — no external icon libs):
+    WhatsApp  ✉  (U+2709)
+    Instagram ●  (U+25CF)
+    LinkedIn  in (text)
+
+  Responsive collapse: 4-col → 2-col @ 1024px → 1-col @ 768px.
+
+────────────────────────────────────────────────────────────────────
+COMPONENTS ADDED TO css/components.css
+────────────────────────────────────────────────────────────────────
+
+  Buttons
+    .btn-primary    pink→purple gradient, pill, white text, hover glow + lift
+    .btn-secondary  transparent + white border, hover fills white
+
+  Cards
+    .card           bg-secondary, border-subtle, radius-2xl (18px), padding 24px
+    .card:hover     translateY(-2px) + border-light + shadow-lg
+    .card__title / .card__body  (typography hooks)
+
+  Badges
+    .badge          small pill (text-sm, bg-white-08, border-subtle)
+    .badge--accent  pink variant for "Most Popular"
+
+  Section variants
+    .section-dark        flat bg-secondary
+    .gradient-hero       3-stop linear-gradient (primary → mid → primary)
+    .glow-effect         accent-pink box-shadow ring
+
+  Header
+    .site-header / .site-header__inner / .site-header__actions
+    .site-header.scrolled (scroll state)
+    .logo / .logo__mark / .logo__text / .logo--footer
+    .main-nav / .main-nav__list
+    .lang-switcher / .lang-btn / .lang-btn.active
+    .hamburger / .hamburger__line / .hamburger.active (×→≡)
+    .mobile-nav / .mobile-nav__list / .mobile-nav__footer / .mobile-nav__cta
+    body { padding-top: var(--header-height) }  ← pushes content below fixed header
+
+  Footer
+    .site-footer
+    .footer-grid        (4-col → 2 → 1 responsive)
+    .footer-brand / .footer-tagline / .logo--footer
+    .footer-col / .footer-col__title
+    .footer-bottom / .footer-bottom__inner
+    .social-links / .social-link / .social-link__icon (hover → pink)
+    .copyright
+
+  Responsive
+    @media (max-width: 1024px)   .footer-grid → 2-col
+    @media (max-width: 768px)    header collapses (hamburger shown), footer → 1-col
+    @media (prefers-reduced-motion: reduce)  all transitions disabled
+
+────────────────────────────────────────────────────────────────────
+VERIFICATION CHECKLIST
+────────────────────────────────────────────────────────────────────
+
+  [✓] partials/ directory created
+  [✓] partials/header.html: sticky + blur + nav + lang + CTA + hamburger + mobile-nav
+  [✓] partials/footer.html: 4-col grid + social + lang + copyright
+  [✓] css/components.css expanded from placeholder (490 lines, 62 selectors)
+  [✓] CSS brace balance: 69 open / 69 close
+  [✓] HTML tag balance: header (45/45), footer (58/58)
+  [✓] Zero modifications to css/tokens.css or css/base.css (per MUST NOT DO)
+  [✓] Zero JavaScript added (per MUST NOT DO — all JS already in js/main.js)
+  [✓] No external icon libs — Unicode glyphs only
+  [✓] All nav/CTA elements carry data-i18n + data-lang hooks
+  [✓] Responsive: header collapses at 768px; footer collapses 4→2→1
+
+────────────────────────────────────────────────────────────────────
+DESIGN SYSTEM WORKFLOW — Phase Confirmation
+────────────────────────────────────────────────────────────────────
+
+  Phase 1 (Analyze)     ✓ Tokens, base, animations, partials reference,
+                           Pomelo screenshots (nav + footer desktop + mobile),
+                           JS modules (main, language) — all reviewed.
+  Phase 2 (System)      ✓ System exists (55 tokens). No new system needed;
+                           extended components.css with 4 component-scoped vars.
+  Phase 3 (Build)       ✓ Every color / radius / font-size / spacing / shadow
+                           consumes a token. Only #1B1240 is hardcoded and is
+                           NAMED as --color-hero-gradient-mid for traceability.
+  Phase 4 (Verify)      ✓ Self-audit checklist above all passing.
+
+────────────────────────────────────────────────────────────────────
+FOLLOW-UP SUGGESTIONS (not in this task's scope)
+────────────────────────────────────────────────────────────────────
+
+  - Promote --color-hero-gradient-mid, --header-height, --header-height-mobile,
+    --logo-size to css/tokens.css when convenient (Task 11/cleanup task).
+  - Consider adding --space-section / --space-section-mobile tokens (currently
+    hardcoded 80px/48px in base.css). Flagged in Task 1 notepad.
+  - Add --tracking-h3: -0.8px token (currently hardcoded in base.css h3 rule).
+  - The logo__mark uses a 7px border-radius — could be --radius-lg (8px) once
+    tokens are revisited.

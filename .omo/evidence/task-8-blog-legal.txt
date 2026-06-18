@@ -1,0 +1,106 @@
+TASK 8 — BLOG & LEGAL PAGES
+============================
+Date: 2026-06-18
+Status: COMPLETE
+
+FILES CREATED
+-------------
+1. /home/marcelo/site/blog/index.html          (710 lines, 28201 bytes)
+2. /home/marcelo/site/blog/post-template.html (818 lines, 29999 bytes)
+3. /home/marcelo/site/privacy.html            (546 lines, 24567 bytes)
+4. /home/marcelo/site/terms.html              (536 lines, 25901 bytes)
+5. /home/marcelo/site/blog/                    (directory created)
+
+TOTAL: 2,610 lines, ~108.7 KB across 4 HTML files.
+
+VERIFICATION SUMMARY
+--------------------
+Blog Index (/blog/index.html):
+  - 5 post cards in grid (1 featured spanning 2 cols + 4 standard)
+  - Sidebar: Categories (6), Popular tags (9), Newsletter signup
+  - Pagination visual: 4 page badges
+  - data-animate sections: 3
+  - data-i18n attributes: 18
+  - .card instances: 5
+  - var(--*) refs: 69
+  - Lorem ipsum: 0
+  - Internal post links to post-template.html: 15
+
+Blog Post Template (/blog/post-template.html):
+  - 21:9 featured image placeholder (gradient + emoji)
+  - Article body: drop-cap intro, 5 H2 sections, 1 H3, blockquote, 3-stat
+    callout, ordered list, unordered list, inline code, author bio
+  - Sidebar: share links (4 platforms)
+  - Related posts: 3 cards in .section-dark
+  - data-animate sections: 5
+  - data-i18n attributes: 18
+  - .card instances: 3
+  - var(--*) refs: 89
+  - Lorem ipsum: 0
+
+Privacy Policy (/privacy.html):
+  - 5 sections (Information Collected, Use, Cookies, Third Parties, Contact)
+  - Sticky TOC grid (5 items) at top
+  - legal-note callout boxes
+  - Footer contact card with email link
+  - data-animate sections: 4
+  - data-i18n attributes: 16
+  - var(--*) refs: 49
+  - Lorem ipsum: 0
+  - Email: privacy@brand.example (placeholder, not real)
+
+Terms of Service (/terms.html):
+  - 5 sections (Acceptance, Services, IP, Liability, Contact)
+  - Sticky TOC grid (5 items) at top
+  - legal-note callout boxes
+  - Footer contact card with email link
+  - data-animate sections: 4
+  - data-i18n attributes: 16
+  - var(--*) refs: 49
+  - Lorem ipsum: 0
+  - Email: legal@brand.example (placeholder, not real)
+
+DESIGN SYSTEM CONSUMPTION
+-------------------------
+- CSS load order on every page: tokens -> base -> components -> animations
+- Reuses: .card, .btn-primary, .badge, .gradient-hero, .section-dark,
+  .site-header, .site-footer, .container, .logo, .lang-switcher
+- All page-specific styles live in scoped <style> blocks (no css/components.css edits)
+- 0 modifications to css/, js/, or partials/
+- 0 new files outside the allowed scope (blog/, privacy.html, terms.html)
+- Hex colors in body are HTML numeric entities (emoji) — not real color literals
+
+TAG BALANCE
+-----------
+blog/index.html:           div 31/31, section 3/3, article 5/5
+blog/post-template.html:  div 37/37, section 5/5, article 4/4
+privacy.html:             div 23/23, section 4/4, article 5/5
+terms.html:               div 24/24, section 4/4, article 5/5
+
+INTERNAL LINKING
+----------------
+- All nav links use relative paths from each page's directory level.
+- Blog pages link to /blog/index.html, /contact.html (with ../ prefix).
+- Legal pages live at root: privacy.html + terms.html link directly.
+- Footer "Company" column adds Privacy + Terms links for cross-discovery.
+- All post cards link to post-template.html (placeholder until real slugs exist).
+- No broken links found (verified by structure grep).
+
+COPY STANDARDS
+--------------
+- 0 lorem ipsum across all 4 files.
+- Blog titles are real revenue-infrastructure topics (speed-to-lead, WhatsApp
+  API, CRM pipelines, conversion metrics, case studies).
+- Post body (post-template) is a full 600-word sample essay with stats, a
+  pull quote, an ordered list, and an unordered list.
+- Privacy and Terms use realistic placeholder legal language — explicitly
+  NOT real legal advice, but written to the standard of a real SaaS vendor.
+
+CONSTRAINTS ENFORCED
+--------------------
+- 0 modifications to css/, js/, partials/, or any file outside scope.
+- 0 external icon libraries (Unicode glyphs only).
+- 0 actual images (gradient + emoji placeholders).
+- 0 JavaScript frameworks (only main.js + language.js referenced).
+- 0 prices anywhere (legal pages have no commercial content).
+- 0 Grav/Twig syntax.

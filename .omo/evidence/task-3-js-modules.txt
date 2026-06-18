@@ -1,0 +1,62 @@
+# Evidence: Task 3 — Shared JavaScript Modules
+
+Date: 2026-06-18
+Plan: `.omo/plans/site-template.md`
+Reference read: `docs/website-plan-v3.md`
+
+## Files created
+
+- `js/main.js`
+- `js/faq.js`
+- `js/form.js`
+- `js/language.js`
+
+## Module summary
+
+### `js/main.js`
+- Uses IIFE + `DOMContentLoaded`.
+- Toggles `.hamburger.active`, `aria-expanded`, and `.mobile-nav.open` visibility.
+- Intercepts `a[href^="#"]` links and calls `scrollIntoView({ behavior: 'smooth', block: 'start' })`.
+- Adds/removes `header.scrolled` when `window.scrollY > 50`.
+- Observes `[data-animate]` with Intersection Observer and adds `.animate-in`.
+- Ensures `.whatsapp-float` is fixed bottom-right.
+
+### `js/faq.js`
+- Uses IIFE + `DOMContentLoaded`.
+- Selects all `.faq-item` elements.
+- Toggles `.active` on the parent FAQ item from `.faq-question` clicks.
+- Sets `.faq-answer` `maxHeight` to `scrollHeight + 'px'` when active and `0px` when inactive.
+- Closes other FAQ items so only one answer is open at a time.
+
+### `js/form.js`
+- Uses IIFE + `DOMContentLoaded`.
+- Finds all `form[data-validate]`.
+- Prevents native submit and performs client-side validation only.
+- Validates required fields and email fields by requiring `@` and `.`.
+- Shows `.error` text next to invalid fields.
+- Clears errors on valid input/blur.
+- Shows `.success-message` and hides the submitted form after valid submission.
+
+### `js/language.js`
+- Uses IIFE + `DOMContentLoaded`.
+- Defines translations for `en`, `pt`, and `es`.
+- Includes CTA text, nav items, and hero headline/subtitle/eyebrow translations.
+- Updates all `[data-i18n]` elements on `.lang-btn` click.
+- Stores selected language with `localStorage.setItem('lang', code)`.
+- Reads `localStorage.getItem('lang')` on page load and applies it.
+- Adds `.active` and `aria-pressed` state to the selected language button.
+
+## Verification evidence
+
+- `git diff --check -- js/main.js js/faq.js js/form.js js/language.js` returned no whitespace errors.
+- Pure LOC review:
+  - `js/main.js`: 76
+  - `js/faq.js`: 49
+  - `js/form.js`: 93
+  - `js/language.js`: 114
+  - All are below the 250 pure LOC ceiling.
+- Static guard checks:
+  - `DOMContentLoaded` appears in all 4 JS modules.
+  - IIFE pattern appears in all 4 JS modules.
+  - No matches for `import`, `export`, `jquery`, `$(`, `fetch`, `XMLHttpRequest`, `axios`, or `.submit()`.
+- `node --check` was attempted for syntax validation, but `node` is not installed in this environment.

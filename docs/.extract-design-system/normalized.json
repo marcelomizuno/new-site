@@ -1,0 +1,126 @@
+{
+  "source": "https://pomelo.la/en",
+  "extractedAt": "2026-06-16",
+  "builder": "Next.js (Vercel)",
+  "fonts": {
+    "primary": {
+      "family": "Geist",
+      "fallback": "\"Geist Fallback\", Arial, sans-serif",
+      "weights": ["100-900 (variable)"],
+      "files": [
+        "/_next/static/media/f639721981034f88-s.woff2",
+        "/_next/static/media/9766a7e9e2e0ad5a-s.woff2",
+        "/_next/static/media/b66cf8e69499582a-s.woff2",
+        "/_next/static/media/aa016aab0e6d1295-s.woff2",
+        "/_next/static/media/22a5144ee8d83bca-s.p.woff2"
+      ]
+    },
+    "mono": {
+      "family": "Geist Mono",
+      "fallback": "\"Geist Mono Fallback\", Arial, monospace",
+      "weights": ["100-900 (variable)"],
+      "files": [
+        "/_next/static/media/d100b2a099e34044-s.woff2",
+        "/_next/static/media/2c34d62a75506231-s.woff2",
+        "/_next/static/media/0f1bdadaf30e2d5f-s.woff2",
+        "/_next/static/media/a115172161b307bb-s.woff2",
+        "/_next/static/media/601f5c280d60caca-s.woff2",
+        "/_next/static/media/f5271587012faf78-s.p.woff2"
+      ]
+    }
+  },
+  "colors": {
+    "backgrounds": {
+      "primary": "#080C21",
+      "secondary": "#12162B",
+      "surface_light": "rgba(18, 22, 43, 0.4)",
+      "white": "#FFFFFF",
+      "white_03": "rgba(255, 255, 255, 0.03)",
+      "white_06": "rgba(255, 255, 255, 0.06)",
+      "white_08": "rgba(255, 255, 255, 0.08)",
+      "white_10": "rgba(255, 255, 255, 0.10)",
+      "white_20": "rgba(255, 255, 255, 0.20)",
+      "accent_glow": "rgba(244, 114, 182, 0.15)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#9CA3AF",
+      "muted": "#ADA1A5",
+      "dark": "#000000",
+      "pink_gradient_start": "#EC4899",
+      "pink_gradient_end": "#FFE4FF"
+    },
+    "accent": {
+      "pink_500": "#EC4899",
+      "pink_400": "#F472B6",
+      "pink_300": "#F9A8D4",
+      "pink_200": "#FBCFE8",
+      "pink_100": "#FDE7F3",
+      "purple_400": "#C084FC",
+      "gradient_pink": "linear-gradient(from pink shades: #EC4899 → #FFE4FF)"
+    },
+    "borders": {
+      "subtle": "rgba(255, 255, 255, 0.06)",
+      "light": "rgba(255, 255, 255, 0.10)"
+    }
+  },
+  "typography": {
+    "scale": {
+      "xs": "10px",
+      "sm": "12px",
+      "base_sm": "13px",
+      "base": "14px",
+      "md": "16px",
+      "lg": "20px",
+      "xl": "24px",
+      "2xl": "40px",
+      "3xl": "65px",
+      "4xl": "70px",
+      "5xl": "80px"
+    },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600
+    },
+    "headings": {
+      "h1": { "size": "70px", "weight": 600, "lineHeight": "70px", "letterSpacing": "-3px" },
+      "h2": { "size": "65px", "weight": 600, "lineHeight": "65px", "letterSpacing": "-1.625px" },
+      "h3": { "size": "40px", "weight": 600, "lineHeight": "48px", "letterSpacing": "-0.8px" }
+    },
+    "body": {
+      "size": "13px-16px",
+      "weight": 400,
+      "lineHeight": "19.5px-24px",
+      "letterSpacing": "-0.13px"
+    }
+  },
+  "spacing": {
+    "wrapper": "95%",
+    "maxWidth": "1440px",
+    "gridGap": "28px",
+    "sectionPadding": "80px-120px",
+    "componentPadding": "24px-48px",
+    "elementPadding": "8px-16px"
+  },
+  "borderRadius": {
+    "sm": "2px",
+    "md": "5px",
+    "lg": "8px",
+    "xl": "10px",
+    "2xl": "18px",
+    "3xl": "32px",
+    "full": "50px",
+    "pill": "9999px",
+    "circle": "50%"
+  },
+  "shadows": {
+    "sm": "0 0 5px 0 rgba(128, 128, 128, 0.3)",
+    "lg": "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+  },
+  "effects": {
+    "theme": "dark",
+    "glow": "pink/magenta glow effects on decorative elements",
+    "gradients": "subtle dark gradients, pink accent gradients"
+  }
+}

@@ -1,0 +1,116 @@
+Task 11 — Scroll Animations & Micro-Interactions
+==================================================
+
+Files modified
+--------------
+- css/animations.css     10 → 263 lines   (was placeholder, now full motion system)
+- js/main.js             94 → 208 lines   (reveal API + micro-interaction wiring)
+- .omo/notepads/site-template/learnings.md   (appended Task 11 entry)
+
+Files NOT modified
+------------------
+- HTML files (per MUST NOT DO)
+- components.css / tokens.css / base.css (single-responsibility preserved)
+- partials/ or any other JS modules
+
+
+css/animations.css — new contents
+---------------------------------
+5 keyframes:
+  - fadeInUp       opacity 0→1, translateY 20px→0
+  - slideInLeft    opacity 0→1, translateX -50px→0
+  - slideInRight   opacity 0→1, translateX 50px→0
+  - scaleIn        opacity 0→1, scale 0.9→1
+  - subtlePulse    box-shadow ring (CTA hover, infinite opt-in)
+
+4 reveal classes (two-state pattern: base class hides, .in-view reveals):
+  - .fade-in                  (spec: opacity 0→1, translateY 20px→0, 0.6s ease ✓)
+  - .slide-in-left            (spec: translateX -50px→0 ✓)
+  - .slide-in-right           (spec: translateX 50px→0 ✓)
+  - .scale-in                 (spec: scale 0.9→1 ✓)
+
+4 stagger delays (sequential reveals):
+  - .stagger-1   transition-delay: 0.1s
+  - .stagger-2   transition-delay: 0.2s
+  - .stagger-3   transition-delay: 0.3s
+  - .stagger-4   transition-delay: 0.4s
+
+Backward-compat fallback for [data-animate] sections (used by 17 HTML files):
+  - [data-animate]            opacity 0, translateY 20px, transition 0.6s ease
+  - [data-animate].animate-in opacity 1, translateY 0
+
+3 micro-interaction classes (auto-applied by main.js):
+  - .card--interactive        translateY(-4px) + accent-glow on hover
+  - .btn--glow                scale(1.02) + infinite subtlePulse on hover
+  - .link-underline           underline width 0→100% on hover
+
+1 reduced-motion block:
+  - Snaps all reveal classes to opacity:1, transform:none
+  - Cancels .stagger-* delays
+  - Disables .card--interactive lift, .btn--glow scale + pulse
+  - Locks .link-underline underline to 100% (still visible, not animated)
+
+All keyframes use only transform + opacity → GPU-accelerated, no layout shifts.
+All durations ≤ 0.6s (0.8s max allowed per MUST NOT, used as ceiling not target).
+Only 1 infinite loop (subtlePulse) and only on .btn--glow opt-in hover.
+
+
+js/main.js — new features
+-------------------------
+Preserved from before:
+  ✓ Mobile menu toggle (.hamburger + .mobile-nav)
+  ✓ Header scrolled state (scrollY > 50)
+  ✓ Smooth scroll for a[href^="#"]
+  ✓ WhatsApp float positioning
+  ✓ Legacy IntersectionObserver for [data-animate] → adds .animate-in
+  ✓ Graceful fallback when IntersectionObserver is missing
+
+New APIs (Task 11):
+  ✓ data-animation="fade-in|slide-in-left|slide-in-right|scale-in"
+      → maps to the named reveal class via REVEAL_CLASSES lookup
+      → aliases: "fade" → fade-in, "slide-left" → slide-in-left, etc.
+  ✓ data-delay="<number>"
+      → accepts "300" (ms) or "0.3" (s); sets element.style.transitionDelay
+  ✓ data-stagger-children="<n>" (or bare attribute → default 4)
+      → auto-applies .stagger-1..4 to direct children
+
+  ✓ applyMicroInteractions() runs on DOMContentLoaded:
+      → .card        → adds .card--interactive
+      → .btn-primary → adds .btn--glow
+      → .main-nav__list a, .footer-col a, .mobile-nav__list a → adds .link-underline
+
+  ✓ Unified IntersectionObserver watches ALL reveal candidates in one pass:
+      [data-animate], .fade-in, .slide-in-left, .slide-in-right, .scale-in
+      threshold: 0.12, rootMargin: '0px 0px -8% 0px' (snappier trigger)
+      Adds BOTH .in-view (for new reveal classes) AND .animate-in (legacy)
+      Idempotent — safe to call on already-revealed elements
+
+
+Verification
+------------
+✓ 17 HTML files contain data-animate sections → backward compat preserved
+  (index, about, contact, pricing, privacy, terms, services/×4, industries/×5, blog/×2)
+✓ 263 lines CSS, 43/43 braces balanced
+✓ 208 lines JS, 39/39 braces balanced, 111/111 parens balanced
+✓ All 4 reveal classes present in CSS
+✓ All 4 stagger classes present in CSS
+✓ prefers-reduced-motion block present in animations.css
+✓ No HTML files modified
+✓ No external libraries (GSAP, anime.js, Framer Motion, etc.) introduced
+
+
+How to use the new API
+----------------------
+- Existing pages:  no change. Legacy [data-animate] still reveals.
+- New opt-in reveal:  add class="fade-in" (or slide-in-left / slide-in-right / scale-in)
+  The element stays hidden until it scrolls into view, then fades in.
+- Custom reveal type:  <h2 data-animation="slide-in-left">...</h2>
+- Custom delay:  <div data-animation="fade-in" data-delay="300">...</div>
+- Stagger group:  <ul data-stagger-children>
+                    <li class="fade-in">...</li>
+                    <li class="fade-in">...</li>
+                    <li class="fade-in">...</li>
+                  </ul>
+  Children get .stagger-1, .stagger-2, .stagger-3 automatically.
+- No code change needed to enable hover micro-interactions on cards / CTAs / nav links.
+  main.js wires them automatically on DOMContentLoaded.

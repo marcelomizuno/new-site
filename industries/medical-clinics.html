@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Clinics — Your Schedule Stays Full, Automatically</title>
+  <meta name="description" content="Empty slots cost clinics thousands per month. Smart scheduling, reminders, and pre-consult triage that fill your calendar and cut no-shows by 40%.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="../index.html" class="logo" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Brand</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary" data-i18n-aria-label="aria.primaryNav">
+        <ul class="main-nav__list">
+          <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+          <li><a href="index.html" data-i18n="nav.industries">Industries</a></li>
+          <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.started">Get Started</a>
+      </div>
+
+      <button type="button" class="hamburger" aria-label="Open menu" data-i18n-aria-label="aria.openMenu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n-aria-label="aria.mobileNav" hidden>
+      <ul class="mobile-nav__list">
+        <li><a href="../services/index.html" data-i18n="nav.services">Services</a></li>
+        <li><a href="index.html" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+          <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+        </div>
+        <a href="../contact.html" class="btn-primary mobile-nav__cta" data-i18n="cta.started">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="gradient-hero" data-animate>
+      <div class="container" style="text-align: center; padding-top: 64px; padding-bottom: 64px;">
+        <span class="badge badge--accent" style="margin-bottom: 24px;">🏥 Medical Clinics</span>
+        <h1 style="margin-bottom: 24px;">Your Schedule Stays Full<br>— Automatically</h1>
+        <p style="max-width: 720px; margin: 0 auto 32px; font-size: var(--text-lg); color: var(--color-text-secondary);">
+          Empty slots cost clinics thousands per month. We install a 24/7 scheduling system that books,
+          confirms, and rebooks — so your team focuses on patients, not phone tag.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="../contact.html" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+          <a href="#system" class="btn-secondary">See the System</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ THE PROBLEM ═══════════ -->
+    <section data-animate>
+      <div class="container">
+        <div class="grid-2" style="align-items: center; gap: 64px;">
+          <div>
+            <span class="badge" style="margin-bottom: 16px;">The Problem</span>
+            <h2 style="margin-bottom: 24px;">Empty slots. Last-minute cancellations.<br>Front-desk burnout.</h2>
+            <p style="margin-bottom: 16px;">
+              A single no-show is a lost R$ 400–2,000 — and most clinics lose 15–25% of weekly slots to them.
+              Meanwhile, reception spends hours a day confirming appointments that patients forget about anyway.
+            </p>
+          </div>
+          <div class="card" style="padding: 32px;">
+            <ul style="display: flex; flex-direction: column; gap: 16px;">
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">No-show rate sits at 15–25% with manual SMS reminders</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">Patients can't book after hours — and competitors offer it</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">Reception confirms, re-confirms, chases — wastes 3+ hours/day</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold); font-size: var(--text-lg);">✗</span>
+                <span style="color: var(--color-text-secondary);">Empty slots in one specialty can't easily be filled by another</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ THE SOLUTION ═══════════ -->
+    <section id="system" class="section-dark" data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <span class="badge badge--accent" style="margin-bottom: 16px;">Your Revenue System</span>
+          <h2 style="margin-bottom: 16px;">What We Build for Medical Clinics</h2>
+          <p style="max-width: 640px; margin: 0 auto;">An always-on scheduling layer that turns your existing calendar into a revenue engine.</p>
+        </div>
+
+        <div style="display: flex; gap: 16px; align-items: stretch; flex-wrap: wrap; justify-content: center; margin-bottom: 48px;">
+
+          <div class="card" style="flex: 1 1 240px; min-width: 240px;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">💬</div>
+            <h4 class="card__title">Capture</h4>
+            <p class="card__body" style="margin-bottom: 12px;">WhatsApp + web bot for booking and triage:</p>
+            <ul style="display: flex; flex-direction: column; gap: 6px; font-size: var(--text-base-sm); color: var(--color-text-muted);">
+              <li>• By specialty & doctor</li>
+              <li>• By insurance / convênio</li>
+              <li>• First-time vs. returning</li>
+              <li>• Urgent same-day slots</li>
+            </ul>
+          </div>
+
+          <div style="display: flex; align-items: center; color: var(--color-accent-pink-500); font-size: 28px;" aria-hidden="true">→</div>
+
+          <div class="card" style="flex: 1 1 240px; min-width: 240px;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">📊</div>
+            <h4 class="card__title">Qualify</h4>
+            <p class="card__body" style="margin-bottom: 12px;">Pre-consult triage that captures:</p>
+            <ul style="display: flex; flex-direction: column; gap: 6px; font-size: var(--text-base-sm); color: var(--color-text-muted);">
+              <li>• Chief complaint (structured)</li>
+              <li>• Insurance & payment method</li>
+              <li>• Returning patient history</li>
+              <li>• Urgency flags</li>
+            </ul>
+          </div>
+
+          <div style="display: flex; align-items: center; color: var(--color-accent-pink-500); font-size: 28px;" aria-hidden="true">→</div>
+
+          <div class="card" style="flex: 1 1 240px; min-width: 240px;">
+            <div style="font-size: 32px; margin-bottom: 12px;" aria-hidden="true">🔄</div>
+            <h4 class="card__title">Convert</h4>
+            <p class="card__body" style="margin-bottom: 12px;">Automated confirmations + smart rebooking:</p>
+            <ul style="display: flex; flex-direction: column; gap: 6px; font-size: var(--text-base-sm); color: var(--color-text-muted);">
+              <li>• 7-day / 24h / 2h reminders</li>
+              <li>• One-tap reschedule</li>
+              <li>• Waitlist auto-fill</li>
+              <li>• Rebooking after no-show</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="grid-2">
+          <div class="card" style="padding: 24px;">
+            <h4 style="margin-bottom: 8px;">+ Specialty Booking Pages</h4>
+            <p class="card__body">A booking page per specialty and per doctor — with the right intake fields, convênio options, and pre-consult instructions built in.</p>
+          </div>
+          <div class="card" style="padding: 24px;">
+            <h4 style="margin-bottom: 8px;">+ Occupancy Dashboard</h4>
+            <p class="card__body">See fill rate, no-show rate, and revenue per slot per doctor per week — and where to push demand next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ HOW IT WORKS ═══════════ -->
+    <section data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">How It Works for Your Clinic</h2>
+          <p style="max-width: 640px; margin: 0 auto;">From kickoff to first auto-booked appointment — typically 18 days.</p>
+        </div>
+
+        <div class="grid-3" style="gap: 24px;">
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 01</div>
+            <h4 class="card__title">Map your schedule & convênios</h4>
+            <p class="card__body">We map every specialty, every doctor, every convênio accepted, and the slots that historically under-fill.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 02</div>
+            <h4 class="card__title">Integrate with your agenda</h4>
+            <p class="card__body">We connect to your existing scheduling system (Doctoralia, Clinic Express, iClinic, etc.) so nothing has to change on your team's side.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 03</div>
+            <h4 class="card__title">Launch booking & reminders</h4>
+            <p class="card__body">WhatsApp bot, web booking, and the multi-step reminder cadence — all wired to your live calendar.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 04</div>
+            <h4 class="card__title">Turn on waitlist auto-fill</h4>
+            <p class="card__body">Cancelled slots get auto-offered to the next patient on the waitlist — recovered revenue, zero phone tag.</p>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: var(--text-sm); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); margin-bottom: 8px;">STEP 05</div>
+            <h4 class="card__title">Review weekly occupancy</h4>
+            <p class="card__body">We review the dashboard with your front-desk lead each week and tune cadence, timing, and specialty mix.</p>
+          </div>
+          <div class="card" style="padding: 28px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--color-bg-accent-glow); border-color: var(--color-accent-pink-500);">
+            <h4 style="margin-bottom: 8px;">Average lift</h4>
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug);">−40%</p>
+            <small>no-show rate in first 60 days</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ COMPLIANCE ═══════════ -->
+    <section class="section-dark" data-animate>
+      <div class="container">
+        <div class="grid-2" style="align-items: center; gap: 64px;">
+          <div>
+            <span class="badge badge--accent" style="margin-bottom: 16px;">Compliance</span>
+            <h2 style="margin-bottom: 20px;">CFM / CRM compliant by design —<br>no medical advertising gray zones.</h2>
+            <p style="margin-bottom: 16px;">
+              Brazilian medical advertising rules (Resolução CFM 1.974/2011) are some of the strictest in the world.
+              Every booking flow, reminder, and follow-up respects patient privacy, capture consent, and never makes
+              outcome promises a doctor's license couldn't back up.
+            </p>
+            <ul style="display: flex; flex-direction: column; gap: 12px;">
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">No medical claims or before/after language in any flow</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">CRM number + specialty surfaced on every booking page</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">Explicit consent capture before any patient data is stored</span>
+              </li>
+              <li style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--color-accent-pink-500); font-weight: var(--font-semibold);">✓</span>
+                <span style="color: var(--color-text-secondary);">LGPD-aligned data retention and patient-deletion workflow</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card" style="padding: 32px; text-align: center;">
+            <div style="font-size: 56px; margin-bottom: 16px;" aria-hidden="true">⚕️</div>
+            <h4 class="card__title">Built for CFM-regulated clinics</h4>
+            <p class="card__body">From solo practices to multi-specialty clinics — the system respects your council's local guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ METRICS ═══════════ -->
+    <section data-animate>
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">Metrics That Fill the Calendar</h2>
+          <p style="max-width: 640px; margin: 0 auto;">We track what your operations lead actually cares about.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">+18%</p>
+            <h5 style="margin-bottom: 4px;">Slot fill rate</h5>
+            <small>Same doctors, fuller weeks</small>
+          </div>
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">−40%</p>
+            <h5 style="margin-bottom: 4px;">No-show rate</h5>
+            <small>After smart reminders</small>
+          </div>
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">+34%</p>
+            <h5 style="margin-bottom: 4px;">After-hours bookings</h5>
+            <small>Patients who booked when office was closed</small>
+          </div>
+          <div class="card" style="padding: 28px; text-align: center;">
+            <p style="font-size: var(--text-3xl); color: var(--color-accent-pink-300); font-weight: var(--font-semibold); letter-spacing: var(--tracking-snug); margin-bottom: 8px;">3 hrs</p>
+            <h5 style="margin-bottom: 4px;">Saved per day</h5>
+            <small>Reception time freed for in-person care</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIAL ═══════════ -->
+    <section class="section-dark" data-animate>
+      <div class="container">
+        <div class="card" style="max-width: 800px; margin: 0 auto; padding: 48px; text-align: center;">
+          <p style="font-size: var(--text-xl); color: var(--color-text-primary); font-weight: var(--font-medium); line-height: var(--leading-snug); margin-bottom: 24px;">
+            "Our no-show rate dropped from 22% to under 13% in two months — and our reception finally has time to greet patients instead of chasing WhatsApp messages."
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+            <div style="width: 48px; height: 48px; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--color-accent-pink-500), var(--color-accent-purple-400));"></div>
+            <div style="text-align: left;">
+              <p style="color: var(--color-text-primary); font-weight: var(--font-semibold); margin-bottom: 0;">Clinic Director</p>
+              <small>Multi-specialty Clinic · 6 doctors</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FAQ ═══════════ -->
+    <section data-animate>
+      <div class="container" style="max-width: 800px;">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <h2 style="margin-bottom: 16px;">Frequently Asked Questions</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">Does this integrate with our existing scheduling software?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">Yes — we integrate with iClinic, Clinic Express, Doctoralia, MedPlus, and most cloud-based agendas. If you use something custom, we build the integration in week 2.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">How do reminders respect patient privacy?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">Reminders are sent only on confirmed consent, include only the doctor's name and time (no medical details), and offer a one-tap opt-out. Patient data is stored LGPD-aligned and deletable on request.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">What about patients without WhatsApp?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">Reminders fall back to SMS and email automatically. Patients can also book via web — no WhatsApp required. The bot just makes WhatsApp the path of least friction for the 80%+ who use it.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">Can the bot handle convênio-specific intake?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">Yes. We map the convênios you accept per specialty and per doctor — and the bot routes patients only to doctors and slots where their convênio is valid. No more booking a particular that won't be covered.</p>
+            </div>
+          </div>
+
+          <div class="faq-item card" style="padding: 0;">
+            <button class="faq-question" type="button" aria-expanded="false" style="width: 100%; text-align: left; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--color-text-primary);">
+              <span style="font-size: var(--text-md); font-weight: var(--font-semibold);">Will the bot replace our reception team?</span>
+              <span aria-hidden="true" style="color: var(--color-accent-pink-300); font-size: var(--text-lg);">+</span>
+            </button>
+            <div class="faq-answer" aria-hidden="true" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <p style="padding: 0 24px 24px;">No — it removes the lowest-value work (chasing, confirming, rebooking) so reception can focus on in-person patients, complex cases, and the moments that need a human. Most clinics redeploy, not lay off.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FINAL CTA ═══════════ -->
+    <section class="gradient-hero" data-animate>
+      <div class="container" style="text-align: center;">
+        <span class="badge badge--accent" style="margin-bottom: 24px;">For Medical Clinics</span>
+        <h2 style="margin-bottom: 20px;">Stop losing thousands<br>to empty slots and no-shows.</h2>
+        <p style="max-width: 640px; margin: 0 auto 32px;">
+          Free 30-minute diagnosis. We'll map your current schedule, show you the leaks,
+          and tell you exactly what it would take to fix them — no commitment.
+        </p>
+        <a href="../contact.html" class="btn-primary" data-i18n="cta.primary">Get Your Free Diagnosis</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo logo--footer" aria-label="Brand — Home" data-i18n-aria-label="aria.logoHome">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">Brand</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Revenue infrastructure for service businesses that refuse to lose leads.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Services" data-i18n-aria-label="aria.footerServices">
+          <h5 class="footer-col__title" data-i18n="footer.services">Services</h5>
+          <ul>
+            <li><a href="../services/ai-automation.html" data-i18n="footer.aiAutomation">AI Automation</a></li>
+            <li><a href="../services/web-development.html" data-i18n="footer.webDevelopment">Web Development</a></li>
+            <li><a href="../services/ecommerce.html" data-i18n="footer.ecommerce">E-commerce</a></li>
+            <li><a href="../services/index.html" data-i18n="footer.allServices">All Services</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Industries" data-i18n-aria-label="aria.footerIndustries">
+          <h5 class="footer-col__title" data-i18n="footer.industries">Industries</h5>
+          <ul>
+            <li><a href="dental-aesthetics.html">Dental Aesthetics</a></li>
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-clinics.html">Medical Clinics</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Company" data-i18n-aria-label="aria.footerCompany">
+          <h5 class="footer-col__title" data-i18n="footer.company">Company</h5>
+          <ul>
+            <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="../pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="../blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom__inner">
+          <div class="lang-switcher" role="group" aria-label="Language" data-i18n-aria-label="aria.language">
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
+          </div>
+
+          <ul class="social-links" aria-label="Social media" data-i18n-aria-label="aria.socialMedia">
+            <li>
+              <a href="https://wa.me/" class="social-link" aria-label="WhatsApp" data-i18n-aria-label="aria.whatsapp" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9993;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/" class="social-link" aria-label="Instagram" data-i18n-aria-label="aria.instagram" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">&#9679;</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/" class="social-link" aria-label="LinkedIn" data-i18n-aria-label="aria.linkedin" rel="noopener" target="_blank">
+                <span class="social-link__icon" aria-hidden="true">in</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Brand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/language.js"></script>
+  <script src="../js/faq.js"></script>
+</body>
+</html>
