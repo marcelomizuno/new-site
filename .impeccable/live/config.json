@@ -1,0 +1,7 @@
+{
+  "files": ["*.html", "services/*.html", "industries/*.html", "blog/*.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "framework": "static",
+  "cspChecked": false
+}
