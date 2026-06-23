@@ -46,6 +46,10 @@
         field.dataset.validateEmail === 'true';
     }
 
+    function isSelectField(field) {
+      return field.tagName === 'SELECT';
+    }
+
     function isValidEmail(value) {
       var atIndex = value.indexOf('@');
       var dotIndex = value.lastIndexOf('.');
@@ -53,16 +57,48 @@
       return atIndex > 0 && dotIndex > atIndex + 1;
     }
 
+    function getFieldLabel(field) {
+      var labelText = '';
+
+      if (field.id && field.labels && field.labels.length > 0) {
+        labelText = field.labels[0].textContent || '';
+      }
+
+      labelText = labelText.replace(/[*\s]+/g, ' ').trim();
+
+      if (!labelText && field.name) {
+        labelText = field.name.replace(/[_-]+/g, ' ').trim();
+      }
+
+      return labelText || 'this field';
+    }
+
+    function getRequiredVerb(label) {
+      return /^(what|how|which)\b/.test(label) ? 'tell us' : 'choose';
+    }
+
     function validateField(field) {
       var value = field.value.trim();
+      var label = getFieldLabel(field).toLowerCase();
 
       if (isRequired(field) && value === '') {
-        showFieldError(field, 'This field is required.');
+        var msg;
+        if (isSelectField(field)) {
+          var verb = getRequiredVerb(label);
+          if (verb === 'tell us') {
+            msg = 'Please ' + verb + ' ' + label.replace(/\?+$/, '') + '.';
+          } else {
+            msg = 'Please ' + verb + ' your ' + label + '.';
+          }
+        } else {
+          msg = 'Please enter your ' + label + '.';
+        }
+        showFieldError(field, msg);
         return false;
       }
 
       if (isEmailField(field) && value !== '' && !isValidEmail(value)) {
-        showFieldError(field, 'Enter a valid email address.');
+        showFieldError(field, 'Enter a valid email — like name@company.com.');
         return false;
       }
 
